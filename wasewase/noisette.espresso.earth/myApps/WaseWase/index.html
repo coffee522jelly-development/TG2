@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAD-Style Multi-Layer Generator with Three.js</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'media',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Biz+UDGothic:wght@400;700&family=Biz+UDMincho&family=Dela+Gothic+One&family=DotGothic16&family=Hachi+Maru+Pop&family=Kaisei+Tokumin:wght@500;700&family=Kiwi+Maru:wght@400;500&family=Kurenaido&family=M+PLUS+1p:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;700&family=Mochiyoda+One&family=Monoton&family=Montserrat:wght@400;700&family=New+Tegomin&family=Noto+Sans+JP:wght@300;400;700&family=Noto+Serif+JP:wght@400;700&family=Oswald:wght@500;700&family=Pacifico&family=Playfair+Display:ital,wght@0,700;1,400&family=Potta+One&family=Reggae+One&family=RocknRoll+One&family=Sawarabi+Mincho&family=Shippori+Mincho:wght@500;700&family=Yuji+Syuku&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #475569; }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type="number"] { -moz-appearance: textfield; }
+    </style>
+</head>
+<body class="bg-[#f8fafc] dark:bg-[#0f172a] text-[#1e293b] dark:text-[#f8fafc] m-0 p-3 flex justify-center text-xs antialiased transition-colors duration-200">
+
+<div class="flex flex-wrap gap-3 max-w-[1600px] w-100 w-full">
+
+    <div class="bg-white dark:bg-[#1e293b] border border-slate-300 dark:border-slate-700 w-[310px] h-[calc(100vh-24px)] flex flex-col gap-3 p-3 select-none shrink-0 overflow-y-auto">
+
+        <div class="mb-2">
+            <div class="text-[11px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase border-b border-slate-200 dark:border-slate-700 pb-1 mb-2">
+                [00] DESIGN PRESETS
+            </div>
+            <select id="presetSelect" class="w-full bg-[#f1f5f9] dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 px-2 py-1 outline-none text-[11px] focus:border-blue-500">
+                <option value="" disabled selected>-- プリセットを選択 --</option>
+                <option value="0">01: Modern Tech</option>
+                <option value="1">02: Pop & Cute</option>
+                <option value="2">03: Dark Hacker</option>
+                <option value="3">04: Elegant Corporate</option>
+                <option value="4">05: Retro Game</option>
+                <option value="5">06: Cyberpunk</option>
+                <option value="6">07: Natural Calm</option>
+                <option value="7">08: YouTube Thumbnail</option>
+                <option value="8">09: Presentation Slide</option>
+                <option value="9">10: Minimalist</option>
+            </select>
+        </div>
+
+        <div>
+            <div class="text-[11px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase border-b border-slate-200 dark:border-slate-700 pb-1 mb-2">
+                [01] CANVAS PROPERTIES
+            </div>
+            <div class="grid grid-cols-2 gap-2 mb-2">
+                <div>
+                    <span class="block text-[10px] opacity-60 mb-0.5">WIDTH (PX)</span>
+                    <input type="number" id="canvasWidth" value="1200" min="100" class="w-full bg-[#f1f5f9] dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 px-2 py-1 outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <span class="block text-[10px] opacity-60 mb-0.5">HEIGHT (PX)</span>
+                    <input type="number" id="canvasHeight" value="630" min="100" class="w-full bg-[#f1f5f9] dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 px-2 py-1 outline-none focus:border-blue-500">
+                </div>
+            </div>
+            <div class="mb-2">
+                <span class="block text-[10px] opacity-60 mb-0.5">BACKGROUND COLOR</span>
+                <div class="flex border border-slate-300 dark:border-slate-700">
+                    <input type="color" id="bgColor" value="#0f172a" class="w-8 h-6 p-0 border-0 bg-transparent cursor-pointer">
+                    <input type="text" id="bgColorText" value="#0f172a" class="w-full bg-[#f1f5f9] dark:bg-[#0f172a] text-[11px] px-2 py-0 border-l border-slate-300 dark:border-slate-700 outline-none uppercase font-mono">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <span class="block text-[10px] opacity-60 mb-0.5">GRID DIVISIONS (X)</span>
+                    <input type="number" id="gridDivX" value="12" min="1" max="100" class="w-full bg-[#f1f5f9] dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 px-2 py-1 outline-none focus:border-blue-500 font-mono text-center">
+                </div>
+                <div>
+                    <span class="block text-[10px] opacity-60 mb-0.5">GRID DIVISIONS (Y)</span>
+                    <input type="number" id="gridDivY" value="12" min="1" max="100" class="w-full bg-[#f1f5f9] dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 px-2 py-1 outline-none focus:border-blue-500 font-mono text-center">
+                </div>
+            </div>
+        </div>
+
+        <div class="flex gap-1">
+            <button id="undoBtn" class="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 disabled:opacity-30 disabled:hover:bg-slate-200 text-[#1e293b] dark:text-white px-2 py-1 flex items-center font-mono text-[10px] gap-1 transition-colors flex-1 justify-center border border-slate-300 dark:border-slate-600" title="UNDO" disabled>
+                <i data-feather="corner-up-left" class="w-3 h-3"></i>UNDO
+            </button>
+            <button id="redoBtn" class="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 disabled:opacity-30 disabled:hover:bg-slate-200 text-[#1e293b] dark:text-white px-2 py-1 flex items-center font-mono text-[10px] gap-1 transition-colors flex-1 justify-center border border-slate-300 dark:border-slate-600" title="REDO" disabled>
+                <i data-feather="corner-up-right" class="w-3 h-3"></i>REDO
+            </button>
+        </div>
+
+        <div class="flex flex-col">
+            <div class="text-[11px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase border-b border-slate-200 dark:border-slate-700 pb-1 mb-2 flex justify-between items-center">
+                <span>[02] TEXT LAYERS</span>
+                <button id="addLayerBtn" class="bg-slate-200 dark:bg-slate-700 hover:bg-blue-500 dark:hover:bg-blue-600 hover:text-white text-[#1e293b] dark:text-white px-2 py-0.5 flex items-center gap-1 text-[10px] transition-colors">
+                    <i data-feather="plus" class="w-3 h-3"></i>NEW
+                </button>
+            </div>
+            <div id="layerList" class="flex flex-col gap-1.5 border border-dashed border-slate-300 dark:border-slate-700 p-1.5 bg-[#f8fafc] dark:bg-[#0f172a] max-h-[240px] overflow-y-auto">
+            </div>
+        </div>
+
+        <div class="flex flex-col">
+            <div class="text-[11px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase border-b border-slate-200 dark:border-slate-700 pb-1 mb-2 flex justify-between items-center">
+                <span>[03] GRAPHIC LAYERS (3D)</span>
+                <select id="addShapeSelect" class="bg-slate-200 dark:bg-slate-700 text-[#1e293b] dark:text-white px-1 py-0.5 text-[10px] outline-none cursor-pointer">
+                    <option value="" disabled selected>+ ADD SHAPE</option>
+                    <option value="circle">CIRCLE</option>
+                    <option value="rect">RECTANGLE</option>
+                    <option value="triangle">TRIANGLE</option>
+                    <option value="sector">SECTOR</option>
+                    <option value="ring">RING</option>
+                    <option value="star">STAR</option>
+                    <option value="line">LINE</option>
+                </select>
+            </div>
+            <div id="shapeList" class="flex flex-col gap-1.5 border border-dashed border-slate-300 dark:border-slate-700 p-1.5 bg-[#f8fafc] dark:bg-[#0f172a] max-h-[260px] overflow-y-auto">
+            </div>
+        </div>
+
+        <div class="mt-auto pt-2 border-t border-slate-200 dark:border-slate-700">
+            <div class="text-[11px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase pb-1 mb-1">
+                [04] EXPORT PIPELINE
+            </div>
+            <div class="mb-2">
+                <input type="text" id="fileName" value="creative-cad-thumbnail" class="w-full bg-[#f1f5f9] dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 px-2 py-1 outline-none font-mono focus:border-blue-500">
+            </div>
+            <div class="grid grid-cols-2 gap-2 mb-2">
+                <button id="downloadWebP" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 flex items-center justify-center gap-1.5 transition-colors">
+                    <i data-feather="download" class="w-3.5 h-3.5"></i>WEBP
+                </button>
+                <button id="downloadPNG" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-1.5 flex items-center justify-center gap-1.5 transition-colors">
+                    <i data-feather="download" class="w-3.5 h-3.5"></i>PNG
+                </button>
+            </div>
+            <button id="resetBtn" class="w-full bg-slate-200 dark:bg-slate-700 hover:bg-red-500 hover:text-white text-[#1e293b] dark:text-white font-bold py-1.5 flex items-center justify-center gap-1.5 transition-colors">
+                <i data-feather="trash-2" class="w-3.5 h-3.5"></i>RESET PROJECT
+            </button>
+        </div>
+    </div>
+
+    <div class="bg-white dark:bg-[#1e293b] border border-slate-300 dark:border-slate-700 flex-1 p-3 flex flex-col justify-start items-center min-w-[320px] h-[calc(100vh-24px)] overflow-auto">
+        <div id="canvasContainer" class="border border-slate-300 dark:border-slate-700 bg-[#f1f5f9] dark:bg-[#0f172a] max-w-full overflow-auto relative cursor-move">
+            <canvas id="thumbnailCanvas" class="block max-w-full h-auto"></canvas>
+        </div>
+    </div>
+</div>
+
+<canvas id="threeCanvas" class="hidden"></canvas>
+
+<script>
+    const canvas = document.getElementById('thumbnailCanvas');
+    const ctx = canvas.getContext('2d');
+    const threeCanvas = document.getElementById('threeCanvas');
+
+    const canvasWidthInput = document.getElementById('canvasWidth');
+    const canvasHeightInput = document.getElementById('canvasHeight');
+    const bgColorInput = document.getElementById('bgColor');
+    const bgColorTextInput = document.getElementById('bgColorText');
+    const gridDivXInput = document.getElementById('gridDivX');
+    const gridDivYInput = document.getElementById('gridDivY');
+    const fileNameInput = document.getElementById('fileName');
+
+    const downloadWebPBtn = document.getElementById('downloadWebP');
+    const downloadPNGBtn = document.getElementById('downloadPNG');
+    const resetBtn = document.getElementById('resetBtn');
+
+    const addLayerBtn = document.getElementById('addLayerBtn');
+    const addShapeSelect = document.getElementById('addShapeSelect');
+    const undoBtn = document.getElementById('undoBtn');
+    const redoBtn = document.getElementById('redoBtn');
+
+    const layerListContainer = document.getElementById('layerList');
+    const shapeListContainer = document.getElementById('shapeList');
+    const canvasContainer = document.getElementById('canvasContainer');
+
+    const presetSelect = document.getElementById('presetSelect');
+
+    const presets = [
+        {
+            name: "Modern Tech",
+            layers: [
+                { id: 1, text: "MODERN TECH", fontFamily: "'Oswald', sans-serif", fontSize: 80, textColor: "#ffffff", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
+                { id: 2, text: "NEW RELEASE 2024", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 24, textColor: "#0ea5e9", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 300, color: '#0f172a', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'circle', radius: 250, color: '#0ea5e9', posX: -400, posY: 150, visible: true, isFront: false },
+                { id: 3, type: 'line', radius: 400, color: '#e2e8f0', posX: -200, posY: -100, visible: true, isFront: true, angle: 45, thick: 2 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#1e293b", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Pop & Cute",
+            layers: [
+                { id: 1, text: "カワイイデザイン", fontFamily: "'Hachi Maru Pop', cursive", fontSize: 70, textColor: "#fb7185", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -30, visible: true },
+                { id: 2, text: "POP & CUTE", fontFamily: "'Montserrat', sans-serif", fontSize: 30, textColor: "#fcd34d", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: 50, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'circle', radius: 180, color: '#fbcfe8', posX: 300, posY: 100, visible: true, isFront: false },
+                { id: 2, type: 'star', radius: 100, color: '#fde047', posX: -350, posY: -120, visible: true, isFront: false },
+                { id: 3, type: 'circle', radius: 50, color: '#6ee7b7', posX: -200, posY: 150, visible: true, isFront: true }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#fff1f2", gridDivX: 10, gridDivY: 10
+        },
+        {
+            name: "Dark Hacker",
+            layers: [
+                { id: 1, text: "SYSTEM OVERRIDE", fontFamily: "'DotGothic16', sans-serif", fontSize: 60, textColor: "#22c55e", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
+                { id: 2, text: "> access granted_", fontFamily: "'DotGothic16', sans-serif", fontSize: 28, textColor: "#16a34a", isBold: false, isItalic: false, isUnderline: false, posX: -150, posY: 40, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 800, color: '#000000', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'line', radius: 1200, color: '#166534', posX: -600, posY: -100, visible: true, isFront: false, angle: 0, thick: 1 },
+                { id: 3, type: 'line', radius: 1200, color: '#166534', posX: -600, posY: 0, visible: true, isFront: false, angle: 0, thick: 1 },
+                { id: 4, type: 'line', radius: 1200, color: '#166534', posX: -600, posY: 100, visible: true, isFront: false, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#050505", gridDivX: 20, gridDivY: 20
+        },
+        {
+            name: "Elegant Corporate",
+            layers: [
+                { id: 1, text: "Corporate Strategy", fontFamily: "'Playfair Display', serif", fontSize: 65, textColor: "#1e3a8a", isBold: false, isItalic: true, isUnderline: false, posX: 0, posY: -30, visible: true },
+                { id: 2, text: "Business Solutions for 2024", fontFamily: "'Montserrat', sans-serif", fontSize: 20, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 30, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 400, color: '#ffffff', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'line', radius: 300, color: '#dbeafe', posX: -150, posY: -90, visible: true, isFront: false, angle: 0, thick: 2 },
+                { id: 3, type: 'circle', radius: 300, color: '#bfdbfe', posX: 500, posY: 200, visible: true, isFront: false }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 8, gridDivY: 8
+        },
+        {
+            name: "Retro Game",
+            layers: [
+                { id: 1, text: "PRESS START", fontFamily: "'DotGothic16', sans-serif", fontSize: 80, textColor: "#facc15", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: 0, visible: true },
+                { id: 2, text: "LEVEL 1", fontFamily: "'DotGothic16', sans-serif", fontSize: 30, textColor: "#ffffff", isBold: false, isItalic: false, isUnderline: false, posX: -400, posY: -250, visible: true },
+                { id: 3, text: "SCORE: 000000", fontFamily: "'DotGothic16', sans-serif", fontSize: 30, textColor: "#ffffff", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: -250, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 600, color: '#1e1b4b', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'triangle', radius: 50, color: '#ef4444', posX: -250, posY: 0, visible: true, isFront: true }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#312e81", gridDivX: 16, gridDivY: 16
+        },
+        {
+            name: "Cyberpunk",
+            layers: [
+                { id: 1, text: "NEON CITY", fontFamily: "'Dela Gothic One', cursive", fontSize: 75, textColor: "#f0abfc", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
+                { id: 2, text: "NIGHT RUNNER", fontFamily: "'Oswald', sans-serif", fontSize: 25, textColor: "#2dd4bf", isBold: true, isItalic: true, isUnderline: false, posX: 100, posY: 50, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 600, color: '#2e1065', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'line', radius: 800, color: '#d946ef', posX: -400, posY: 100, visible: true, isFront: true, angle: -15, thick: 8 },
+                { id: 3, type: 'line', radius: 800, color: '#14b8a6', posX: -400, posY: -50, visible: true, isFront: true, angle: 15, thick: 4 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#17052e", gridDivX: 14, gridDivY: 14
+        },
+        {
+            name: "Natural Calm",
+            layers: [
+                { id: 1, text: "Organic Design", fontFamily: "'Shippori Mincho', serif", fontSize: 60, textColor: "#166534", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
+                { id: 2, text: "Natural Elements & Calmness", fontFamily: "'Shippori Mincho', serif", fontSize: 22, textColor: "#4d7c0f", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'circle', radius: 350, color: '#dcfce7', posX: -300, posY: -100, visible: true, isFront: false },
+                { id: 2, type: 'circle', radius: 200, color: '#bbf7d0', posX: 350, posY: 150, visible: true, isFront: false },
+                { id: 3, type: 'sector', radius: 150, color: '#86efac', posX: -100, posY: 200, visible: true, isFront: false, angle: 120 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f0fdf4", gridDivX: 6, gridDivY: 6
+        },
+        {
+            name: "YouTube Thumbnail",
+            layers: [
+                { id: 1, text: "衝撃の真実！", fontFamily: "'Dela Gothic One', cursive", fontSize: 80, textColor: "#ef4444", isBold: false, isItalic: false, isUnderline: true, posX: 0, posY: -50, visible: true },
+                { id: 2, text: "これはヤバい...", fontFamily: "'M PLUS 1p', sans-serif", fontSize: 45, textColor: "#ffffff", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: 50, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 600, color: '#1e293b', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'star', radius: 150, color: '#f59e0b', posX: -350, posY: -100, visible: true, isFront: true },
+                { id: 3, type: 'star', radius: 80, color: '#f59e0b', posX: 400, posY: 150, visible: true, isFront: true }
+            ],
+            canvasWidth: 1280, canvasHeight: 720, bgColor: "#0f172a", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Presentation Slide",
+            layers: [
+                { id: 1, text: "Quarterly Results", fontFamily: "'Montserrat', sans-serif", fontSize: 50, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -150, posY: -100, visible: true },
+                { id: 2, text: "Q3 2024 Performance Review", fontFamily: "'Montserrat', sans-serif", fontSize: 24, textColor: "#64748b", isBold: false, isItalic: false, isUnderline: false, posX: -150, posY: -40, visible: true },
+                { id: 3, text: "+ 25% Growth", fontFamily: "'Oswald', sans-serif", fontSize: 40, textColor: "#10b981", isBold: true, isItalic: false, isUnderline: false, posX: 200, posY: 50, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 600, color: '#ffffff', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'line', radius: 800, color: '#e2e8f0', posX: -400, posY: 0, visible: true, isFront: false, angle: 0, thick: 2 },
+                { id: 3, type: 'rect', radius: 150, color: '#f8fafc', posX: 200, posY: 50, visible: true, isFront: false }
+            ],
+            canvasWidth: 1280, canvasHeight: 720, bgColor: "#f1f5f9", gridDivX: 16, gridDivY: 9
+        },
+        {
+            name: "Minimalist",
+            layers: [
+                { id: 1, text: "less is more.", fontFamily: "'Montserrat', sans-serif", fontSize: 40, textColor: "#333333", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 0, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'circle', radius: 10, color: '#ef4444', posX: 0, posY: 50, visible: true, isFront: false }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 4, gridDivY: 4
+        }
+    ];
+
+    const tScene = new THREE.Scene();
+    const tCamera = new THREE.OrthographicCamera(-600, 600, 315, -315, 1, 100);
+    tCamera.position.set(0, 0, 50);
+    const tRenderer = new THREE.WebGLRenderer({ canvas: threeCanvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+
+    let shapes = [
+        { id: 1, type: 'circle', radius: 150, color: '#10b981', posX: -250, posY: 50, visible: true, isFront: false },
+        { id: 2, type: 'star', radius: 160, color: '#f43f5e', posX: 250, posY: -80, visible: true, isFront: false }
+    ];
+
+    let layers = [
+        { id: 1, text: "INTEGRATED ENGINE", fontFamily: "'Oswald', sans-serif", fontSize: 65, textColor: "#f8fafc", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -40, visible: true },
+        { id: 2, text: "THREE.JS GRAPHICS / 2D CANVAS TEXT", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 30, visible: true }
+    ];
+
+    let activeLayerType = 'text';
+    let activeLayerId = 1;
+    let isDragging = false;
+    let dragTargetLayer = null;
+    let startX, startY;
+
+    let historyStack = [];
+    let historyIndex = -1;
+
+    function saveToLocalStorage() {
+        try {
+            const state = {
+                layers, shapes, activeLayerType, activeLayerId, historyStack, historyIndex,
+                canvasWidth: canvasWidthInput.value, canvasHeight: canvasHeightInput.value,
+                bgColor: bgColorInput.value, gridDivX: gridDivXInput.value, gridDivY: gridDivYInput.value,
+                fileName: fileNameInput.value
+            };
+            localStorage.setItem('cadThumbnailGenState', JSON.stringify(state));
+        } catch (e) {
+            console.warn("ローカル環境のセキュリティ制限により保存スキップ:", e);
+        }
+    }
+
+    function loadFromLocalStorage() {
+        try {
+            const saved = localStorage.getItem('cadThumbnailGenState');
+            if (saved) {
+                const state = JSON.parse(saved);
+                layers = state.layers || layers;
+                shapes = state.shapes || shapes;
+                activeLayerType = state.activeLayerType || activeLayerType;
+                activeLayerId = state.activeLayerId || activeLayerId;
+                historyStack = state.historyStack || [];
+                historyIndex = state.historyIndex !== undefined ? state.historyIndex : -1;
+
+                if (state.canvasWidth) canvasWidthInput.value = state.canvasWidth;
+                if (state.canvasHeight) canvasHeightInput.value = state.canvasHeight;
+                if (state.bgColor) {
+                    bgColorInput.value = state.bgColor;
+                    bgColorTextInput.value = state.bgColor;
+                }
+                if (state.gridDivX) gridDivXInput.value = state.gridDivX;
+                if (state.gridDivY) gridDivYInput.value = state.gridDivY;
+                if (state.fileName) fileNameInput.value = state.fileName;
+                return true;
+            }
+        } catch (e) {
+            console.warn("保存データの読み込みスキップ:", e);
+        }
+        return false;
+    }
+
+    document.fonts.ready.then(() => {
+        const isLoaded = loadFromLocalStorage();
+        if (!isLoaded) {
+            saveHistory();
+        }
+
+        // ★修正: データがロードされてもされていなくても、初回に必ずUIをレンダリングする
+        renderLayerList();
+        renderShapeList();
+        updateHistoryButtons();
+        drawThumbnail();
+    });
+
+    function saveHistory() {
+        if (historyIndex < historyStack.length - 1) {
+            historyStack = historyStack.slice(0, historyIndex + 1);
+        }
+        historyStack.push({
+            layers: JSON.parse(JSON.stringify(layers)),
+            shapes: JSON.parse(JSON.stringify(shapes)),
+            activeLayerType, activeLayerId,
+            canvasWidth: canvasWidthInput.value, canvasHeight: canvasHeightInput.value,
+            bgColor: bgColorInput.value, gridDivX: gridDivXInput.value, gridDivY: gridDivYInput.value
+        });
+        historyIndex++;
+        updateHistoryButtons();
+        saveToLocalStorage();
+    }
+
+    function restoreHistory(index) {
+        if (index < 0 || index >= historyStack.length) return;
+        historyIndex = index;
+        const snapshot = historyStack[historyIndex];
+
+        layers = JSON.parse(JSON.stringify(snapshot.layers));
+        shapes = JSON.parse(JSON.stringify(snapshot.shapes));
+        activeLayerType = snapshot.activeLayerType;
+        activeLayerId = snapshot.activeLayerId;
+        canvasWidthInput.value = snapshot.canvasWidth;
+        canvasHeightInput.value = snapshot.canvasHeight;
+        bgColorInput.value = snapshot.bgColor;
+        bgColorTextInput.value = snapshot.bgColor;
+        gridDivXInput.value = snapshot.gridDivX || 12;
+        gridDivYInput.value = snapshot.gridDivY || 12;
+
+        renderLayerList();
+        renderShapeList();
+        drawThumbnail();
+        updateHistoryButtons();
+        saveToLocalStorage();
+    }
+
+    function updateHistoryButtons() {
+        undoBtn.disabled = historyIndex <= 0;
+        redoBtn.disabled = historyIndex >= historyStack.length - 1;
+    }
+
+    undoBtn.addEventListener('click', () => { if (historyIndex > 0) restoreHistory(historyIndex - 1); });
+    redoBtn.addEventListener('click', () => { if (historyIndex < historyStack.length - 1) restoreHistory(historyIndex + 1); });
+
+    function buildThreeScene() {
+        while(tScene.children.length > 0){ tScene.remove(tScene.children[0]); }
+
+        shapes.forEach((shape, idx) => {
+            if (!shape.visible) return;
+            let geometry;
+            const mat = new THREE.MeshBasicMaterial({ color: shape.color, side: THREE.DoubleSide, transparent: true, opacity: 0.85 });
+
+            if (shape.type === 'circle') {
+                geometry = new THREE.CircleGeometry(shape.radius, 64);
+            } else if (shape.type === 'rect') {
+                const s = shape.radius * 2;
+                geometry = new THREE.PlaneGeometry(s, s);
+            } else if (shape.type === 'sector') {
+                const rad = (shape.angle * Math.PI) / 180;
+                geometry = new THREE.CircleGeometry(shape.radius, 64, 0, rad);
+            } else if (shape.type === 'triangle') {
+                const s = shape.radius * 2; const h = s * Math.sqrt(3) / 2;
+                const tShape = new THREE.Shape(); tShape.moveTo(0, h/2); tShape.lineTo(-s/2, -h/2); tShape.lineTo(s/2, -h/2); tShape.closePath();
+                geometry = new THREE.ShapeGeometry(tShape);
+            } else if (shape.type === 'ring') {
+                geometry = new THREE.RingGeometry(shape.radius * 0.5, shape.radius, 64);
+            } else if (shape.type === 'star') {
+                const sShape = new THREE.Shape();
+                const outer = shape.radius;
+                const inner = shape.radius * 0.4;
+                for(let j=0; j<10; j++) {
+                    const r = j%2===0 ? outer : inner;
+                    const a = (j * Math.PI)/5 - Math.PI/2;
+                    if(j===0) sShape.moveTo(r*Math.cos(a), r*Math.sin(a));
+                    else sShape.lineTo(r*Math.cos(a), r*Math.sin(a));
+                }
+                sShape.closePath();
+                geometry = new THREE.ShapeGeometry(sShape);
+            } else if (shape.type === 'line') {
+                const length = shape.radius * 2; const thick = shape.thick || 5;
+                const lShape = new THREE.Shape(); lShape.moveTo(0, -thick/2); lShape.lineTo(length, -thick/2); lShape.lineTo(length, thick/2); lShape.lineTo(0, thick/2); lShape.closePath();
+                geometry = new THREE.ShapeGeometry(lShape);
+            }
+
+            if (geometry) {
+                const mesh = new THREE.Mesh(geometry, mat);
+                const zPos = (shape.isFront ? 10 : 0) + (idx * 0.01);
+                mesh.position.set(shape.posX, shape.posY, zPos);
+                if (shape.type === 'line' && shape.angle) mesh.rotation.z = (shape.angle * Math.PI) / 180;
+                tScene.add(mesh);
+            }
+        });
+    }
+
+    function renderShapeList() {
+        shapeListContainer.innerHTML = '';
+        shapes.forEach((shape, idx) => {
+            const item = document.createElement('div');
+            const isActive = activeLayerType === 'shape' && shape.id === activeLayerId;
+            item.className = `p-2 border border-slate-300 dark:border-slate-700 flex flex-col gap-1.5 transition-all ${isActive ? 'border-l-2 border-l-emerald-500 bg-white dark:bg-[#1e293b] shadow-sm' : 'border-l border-l-slate-300 dark:border-l-slate-700 bg-slate-50 dark:bg-[#1e293b]/40'}`;
+
+            let uniqueCtrl = '';
+            if (['circle', 'triangle', 'rect', 'ring', 'star'].includes(shape.type)) {
+                uniqueCtrl = `<div><span class="opacity-50">SIZE:</span> <input type="number" class="shape-r-input bg-white dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 w-12 px-0.5 text-center font-mono" value="${shape.radius}"></div>`;
+            } else if (shape.type === 'sector') {
+                uniqueCtrl = `
+                    <div><span class="opacity-50">R:</span> <input type="number" class="shape-r-input bg-white dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 w-11 px-0.5 text-center font-mono" value="${shape.radius}"></div>
+                    <div><span class="opacity-50">DEG:</span> <input type="number" class="shape-a-input bg-white dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 w-11 px-0.5 text-center font-mono" value="${shape.angle || 0}"></div>
+                `;
+            } else if (shape.type === 'line') {
+                uniqueCtrl = `
+                    <div><span class="opacity-50">LEN:</span> <input type="number" class="shape-r-input bg-white dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 w-10 px-0.5 text-center font-mono" value="${shape.radius}"></div>
+                    <div><span class="opacity-50">DEG:</span> <input type="number" class="shape-a-input bg-white dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 w-10 px-0.5 text-center font-mono" value="${shape.angle || 0}"></div>
+                    <div><span class="opacity-50">T:</span> <input type="number" class="shape-t-input bg-white dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 w-8 px-0.5 text-center font-mono" value="${shape.thick || 5}"></div>
+                `;
+            }
+
+            item.innerHTML = `
+                <div class="flex justify-between items-center font-mono font-bold text-[10px] cursor-pointer" onclick="setActiveLayer('shape', ${shape.id})">
+                    <div class="flex items-center gap-0.5">
+                        <select class="shape-type-select bg-slate-200 dark:bg-slate-700 text-[#1e293b] dark:text-white px-1 py-0.5 border-none outline-none font-bold cursor-pointer" onclick="event.stopPropagation()">
+                            <option value="circle" ${shape.type==='circle'?'selected':''}>CIRCLE</option>
+                            <option value="rect" ${shape.type==='rect'?'selected':''}>RECT</option>
+                            <option value="triangle" ${shape.type==='triangle'?'selected':''}>TRIANGLE</option>
+                            <option value="sector" ${shape.type==='sector'?'selected':''}>SECTOR</option>
+                            <option value="ring" ${shape.type==='ring'?'selected':''}>RING</option>
+                            <option value="star" ${shape.type==='star'?'selected':''}>STAR</option>
+                            <option value="line" ${shape.type==='line'?'selected':''}>LINE</option>
+                        </select>
+                        <span class="opacity-50 ml-1">_0${idx+1}</span>
+                    </div>
+                    <div class="flex gap-1">
+                        <button class="p-0.5 hover:bg-slate-200 dark:bg-slate-700" onclick="toggleShapeVisibility(${shape.id}, event)"><i data-feather="${shape.visible?'eye':'eye-off'}" class="w-3 h-3"></i></button>
+                        <button class="p-0.5 hover:bg-red-100 dark:hover:bg-red-900/40 hover:text-red-500" onclick="deleteShape(${shape.id}, event)"><i data-feather="trash-2" class="w-3 h-3"></i></button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mt-1">
+                    <div class="flex gap-1.5 items-center font-mono text-[10px]">
+                        <input type="color" class="shape-color-input w-5 h-[18px] border border-slate-300 dark:border-slate-700 bg-transparent cursor-pointer" value="${shape.color}">
+                        ${uniqueCtrl}
+                    </div>
+                    <label class="flex items-center gap-0.5 cursor-pointer font-mono text-[9px] opacity-80 bg-slate-100 dark:bg-[#0f172a] px-1 py-0.5 rounded-sm border border-slate-200 dark:border-slate-700" onclick="event.stopPropagation()">
+                        <input type="checkbox" class="shape-front-check accent-emerald-500" ${shape.isFront?'checked':''}> FRONT
+                    </label>
+                </div>
+                <div class="flex justify-end gap-1.5 mt-0.5 font-mono text-[10px] opacity-60">
+                    <span>X:<input type="number" class="shape-x-input bg-transparent w-8 border-b border-transparent hover:border-slate-400 focus:border-emerald-500 text-right font-mono" value="${shape.posX}"></span>
+                    <span>Y:<input type="number" class="shape-y-input bg-transparent w-8 border-b border-transparent hover:border-slate-400 focus:border-emerald-500 text-right font-mono" value="${shape.posY}"></span>
+                </div>
+            `;
+
+            item.querySelector('.shape-type-select').addEventListener('change', (e) => { shape.type = e.target.value; renderShapeList(); drawThumbnail(); saveHistory(); });
+            item.querySelector('.shape-front-check').addEventListener('change', (e) => { shape.isFront = e.target.checked; drawThumbnail(); saveHistory(); });
+            item.querySelector('.shape-color-input').addEventListener('change', (e) => { shape.color = e.target.value; drawThumbnail(); saveHistory(); });
+            if(item.querySelector('.shape-r-input')) item.querySelector('.shape-r-input').addEventListener('change', (e) => { shape.radius = parseInt(e.target.value) || 10; drawThumbnail(); saveHistory(); });
+            if(item.querySelector('.shape-a-input')) item.querySelector('.shape-a-input').addEventListener('change', (e) => { shape.angle = parseInt(e.target.value) || 0; drawThumbnail(); saveHistory(); });
+            if(item.querySelector('.shape-t-input')) item.querySelector('.shape-t-input').addEventListener('change', (e) => { shape.thick = parseInt(e.target.value) || 1; drawThumbnail(); saveHistory(); });
+            item.querySelector('.shape-x-input').addEventListener('change', (e) => { shape.posX = parseInt(e.target.value) || 0; drawThumbnail(); saveHistory(); });
+            item.querySelector('.shape-y-input').addEventListener('change', (e) => { shape.posY = parseInt(e.target.value) || 0; drawThumbnail(); saveHistory(); });
+
+            shapeListContainer.appendChild(item);
+        });
+        feather.replace();
+    }
+
+    function renderLayerList() {
+        layerListContainer.innerHTML = '';
+        layers.forEach((layer, idx) => {
+            const item = document.createElement('div');
+            const isActive = activeLayerType === 'text' && layer.id === activeLayerId;
+            item.className = `p-2 border border-slate-300 dark:border-slate-700 flex flex-col gap-1.5 transition-all ${isActive ? 'border-l-2 border-l-blue-500 bg-white dark:bg-[#1e293b] shadow-sm' : 'border-l border-l-slate-300 dark:border-l-slate-700 bg-slate-50 dark:bg-[#1e293b]/40'}`;
+            item.dataset.id = layer.id;
+
+            const fontOptions = `
+                <optgroup label="TECHNICAL / SANS">
+                    <option value="'Oswald', sans-serif" ${layer.fontFamily==="'Oswald', sans-serif"?'selected':''}>Oswald</option>
+                    <option value="'Noto Sans JP', sans-serif" ${layer.fontFamily==="'Noto Sans JP', sans-serif"?'selected':''}>Noto Sans JP</option>
+                    <option value="'Montserrat', sans-serif" ${layer.fontFamily==="'Montserrat', sans-serif"?'selected':''}>Montserrat</option>
+                    <option value="'M PLUS 1p', sans-serif" ${layer.fontFamily==="'M PLUS 1p', sans-serif"?'selected':''}>M PLUS 1p</option>
+                    <option value="'DotGothic16', sans-serif" ${layer.fontFamily==="'DotGothic16', sans-serif"?'selected':''}>DotGothic16</option>
+                </optgroup>
+                <optgroup label="SERIF / CLASSIC">
+                    <option value="'Playfair Display', serif" ${layer.fontFamily==="'Playfair Display', serif"?'selected':''}>Playfair Display</option>
+                    <option value="'Shippori Mincho', serif" ${layer.fontFamily==="'Shippori Mincho', serif"?'selected':''}>Shippori Mincho</option>
+                </optgroup>
+                <optgroup label="CREATIVE / POP">
+                    <option value="'Hachi Maru Pop', cursive" ${layer.fontFamily==="'Hachi Maru Pop', cursive"?'selected':''}>Hachi Maru Pop</option>
+                    <option value="'Dela Gothic One', cursive" ${layer.fontFamily==="'Dela Gothic One', cursive"?'selected':''}>Dela Gothic One</option>
+                </optgroup>
+            `;
+
+            item.innerHTML = `
+                <div class="flex justify-between items-center font-mono font-bold text-[10px] cursor-pointer" onclick="setActiveLayer('text', ${layer.id})">
+                    <span class="opacity-70">TEXT_0${idx + 1}</span>
+                    <div class="flex gap-1">
+                        <button class="p-0.5 hover:bg-slate-200 dark:hover:bg-slate-700" onclick="toggleVisibility(${layer.id}, event)"><i data-feather="${layer.visible ? 'eye' : 'eye-off'}" class="w-3 h-3"></i></button>
+                        <button class="p-0.5 hover:bg-red-100 dark:hover:bg-red-900/40 hover:text-red-500" onclick="deleteLayer(${layer.id}, event)"><i data-feather="trash-2" class="w-3 h-3"></i></button>
+                    </div>
+                </div>
+                <div>
+                    <textarea class="layer-text-input w-full bg-white dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 px-1.5 py-1 outline-none text-[11px] font-mono leading-tight focus:border-blue-500">${layer.text}</textarea>
+                </div>
+                <div class="grid grid-cols-12 gap-1.5 items-center">
+                    <select class="layer-font-select col-span-7 bg-white dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 px-1 py-0.5 outline-none text-[11px] focus:border-blue-500">${fontOptions}</select>
+                    <input type="number" class="layer-size-input col-span-3 bg-white dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 px-1 py-0.5 outline-none font-mono text-[11px] text-center" value="${layer.fontSize}">
+                    <input type="color" class="layer-color-input col-span-2 w-full h-[22px] p-0 border border-slate-300 dark:border-slate-700 bg-transparent cursor-pointer" value="${layer.textColor}">
+                </div>
+                <div class="flex justify-between items-center mt-0.5 pt-1 border-t border-slate-200 dark:border-slate-700/60 font-mono text-[10px]">
+                    <div class="flex gap-2 opacity-80">
+                        <label class="flex items-center gap-0.5 cursor-pointer"><input type="checkbox" class="layer-bold-check accent-blue-500" ${layer.isBold?'checked':''}>B</label>
+                        <label class="flex items-center gap-0.5 cursor-pointer"><input type="checkbox" class="layer-italic-check accent-blue-500" ${layer.isItalic?'checked':''}>I</label>
+                        <label class="flex items-center gap-0.5 cursor-pointer"><input type="checkbox" class="layer-underline-check accent-blue-500" ${layer.isUnderline?'checked':''}>U</label>
+                    </div>
+                    <div class="opacity-60 flex gap-1.5">
+                        <span>X:<input type="number" class="layer-x-input bg-transparent w-7 border-b border-transparent hover:border-slate-400 focus:border-blue-500 text-right font-mono" value="${layer.posX}"></span>
+                        <span>Y:<input type="number" class="layer-y-input bg-transparent w-7 border-b border-transparent hover:border-slate-400 focus:border-blue-500 text-right font-mono" value="${layer.posY}"></span>
+                    </div>
+                </div>
+            `;
+
+            item.querySelector('.layer-text-input').addEventListener('input', (e) => { layer.text = e.target.value; drawThumbnail(); });
+            item.querySelector('.layer-text-input').addEventListener('change', () => { saveHistory(); });
+            item.querySelector('.layer-font-select').addEventListener('change', (e) => { layer.fontFamily = e.target.value; drawThumbnail(); saveHistory(); });
+            item.querySelector('.layer-size-input').addEventListener('input', (e) => { layer.fontSize = parseInt(e.target.value) || 20; drawThumbnail(); });
+            item.querySelector('.layer-size-input').addEventListener('change', () => { saveHistory(); });
+            item.querySelector('.layer-color-input').addEventListener('change', (e) => { layer.textColor = e.target.value; drawThumbnail(); saveHistory(); });
+            item.querySelector('.layer-bold-check').addEventListener('change', (e) => { layer.isBold = e.target.checked; drawThumbnail(); saveHistory(); });
+            item.querySelector('.layer-italic-check').addEventListener('change', (e) => { layer.isItalic = e.target.checked; drawThumbnail(); saveHistory(); });
+            item.querySelector('.layer-underline-check').addEventListener('change', (e) => { layer.isUnderline = e.target.checked; drawThumbnail(); saveHistory(); });
+            item.querySelector('.layer-x-input').addEventListener('change', (e) => { layer.posX = parseInt(e.target.value) || 0; drawThumbnail(); saveHistory(); });
+            item.querySelector('.layer-y-input').addEventListener('change', (e) => { layer.posY = parseInt(e.target.value) || 0; drawThumbnail(); saveHistory(); });
+
+            layerListContainer.appendChild(item);
+        });
+        feather.replace();
+    }
+
+    function setActiveLayer(type, id) {
+        activeLayerType = type; activeLayerId = id;
+        renderLayerList(); renderShapeList(); drawThumbnail();
+    }
+
+    addShapeSelect.addEventListener('change', (e) => {
+        const type = e.target.value; if(!type) return;
+        const newId = shapes.length > 0 ? Math.max(...shapes.map(s => s.id)) + 1 : 1;
+        shapes.push({ id: newId, type: type, radius: 100, angle: 90, color: '#3b82f6', posX: 0, posY: 0, visible: true, thick: 6, isFront: false });
+        activeLayerType = 'shape'; activeLayerId = newId;
+        addShapeSelect.value = '';
+        renderShapeList(); drawThumbnail(); saveHistory();
+    });
+
+    function toggleShapeVisibility(id, event) {
+        event.stopPropagation(); const s = shapes.find(x => x.id === id);
+        if(s) { s.visible = !s.visible; renderShapeList(); drawThumbnail(); saveHistory(); }
+    }
+    function deleteShape(id, event) {
+        event.stopPropagation(); shapes = shapes.filter(x => x.id !== id);
+        if(activeLayerType === 'shape' && activeLayerId === id) activeLayerId = shapes.length > 0 ? shapes[0].id : 1;
+        renderShapeList(); drawThumbnail(); saveHistory();
+    }
+    function toggleVisibility(id, event) {
+        event.stopPropagation(); const l = layers.find(x => x.id === id);
+        if(l) { l.visible = !l.visible; renderLayerList(); drawThumbnail(); saveHistory(); }
+    }
+    function deleteLayer(id, event) {
+        event.stopPropagation(); if (layers.length <= 1) return;
+        layers = layers.filter(x => x.id !== id);
+        if(activeLayerType === 'text' && activeLayerId === id) activeLayerId = layers[0].id;
+        renderLayerList(); drawThumbnail(); saveHistory();
+    }
+
+    addLayerBtn.addEventListener('click', () => {
+        const newId = layers.length > 0 ? Math.max(...layers.map(l => l.id)) + 1 : 1;
+        layers.push({ id: newId, text: "NEW NODE ELEMENT", fontFamily: "'Oswald', sans-serif", fontSize: 32, textColor: "#ffffff", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 0, visible: true });
+        activeLayerType = 'text'; activeLayerId = newId;
+        renderLayerList(); drawThumbnail(); saveHistory();
+    });
+
+    bgColorInput.addEventListener('input', (e) => { bgColorTextInput.value = e.target.value; drawThumbnail(); });
+    bgColorInput.addEventListener('change', () => { saveHistory(); });
+    bgColorTextInput.addEventListener('change', (e) => {
+        if(/^#[0-9A-F]{6}$/i.test(e.target.value)) {
+            bgColorInput.value = e.target.value; drawThumbnail(); saveHistory();
+        }
+    });
+
+    fileNameInput.addEventListener('change', () => { saveToLocalStorage(); });
+
+    [canvasWidthInput, canvasHeightInput, gridDivXInput, gridDivYInput].forEach(input => {
+        input.addEventListener('change', () => { drawThumbnail(); saveHistory(); });
+    });
+
+    presetSelect.addEventListener('change', (e) => {
+        const presetIndex = parseInt(e.target.value);
+        if (isNaN(presetIndex) || !presets[presetIndex]) return;
+
+        if (confirm('プリセットを適用しますか？現在の編集内容は上書きされます。')) {
+            const preset = presets[presetIndex];
+
+            layers = JSON.parse(JSON.stringify(preset.layers));
+            shapes = JSON.parse(JSON.stringify(preset.shapes));
+
+            canvasWidthInput.value = preset.canvasWidth;
+            canvasHeightInput.value = preset.canvasHeight;
+            bgColorInput.value = preset.bgColor;
+            bgColorTextInput.value = preset.bgColor;
+            gridDivXInput.value = preset.gridDivX;
+            gridDivYInput.value = preset.gridDivY;
+
+            activeLayerType = 'text';
+            activeLayerId = layers.length > 0 ? layers[0].id : null;
+
+            renderLayerList();
+            renderShapeList();
+            drawThumbnail();
+            saveHistory();
+        } else {
+            e.target.value = "";
+        }
+    });
+
+    resetBtn.addEventListener('click', () => {
+        if (confirm('プロジェクトを初期化しますか？保存されたデータは完全に消去されます。')) {
+            localStorage.removeItem('cadThumbnailGenState');
+            location.reload();
+        }
+    });
+
+    function drawThumbnail() {
+        const width = parseInt(canvasWidthInput.value) || 1200;
+        const height = parseInt(canvasHeightInput.value) || 630;
+
+        const divX = Math.max(1, parseInt(gridDivXInput.value) || 12);
+        const divY = Math.max(1, parseInt(gridDivYInput.value) || 12);
+        const stepX = width / divX;
+        const stepY = height / divY;
+
+        canvas.width = width;
+        canvas.height = height;
+
+        ctx.fillStyle = bgColorInput.value;
+        ctx.fillRect(0, 0, width, height);
+
+        if (isDragging) {
+            ctx.save();
+            ctx.strokeStyle = "rgba(148, 163, 184, 0.25)"; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+            for (let i = 1; i < divX; i++) { ctx.beginPath(); ctx.moveTo(i * stepX, 0); ctx.lineTo(i * stepX, height); ctx.stroke(); }
+            for (let j = 1; j < divY; j++) { ctx.beginPath(); ctx.moveTo(0, j * stepY); ctx.lineTo(width, j * stepY); ctx.stroke(); }
+            ctx.restore();
+        }
+
+        buildThreeScene();
+        tCamera.left = -width / 2; tCamera.right = width / 2; tCamera.top = height / 2; tCamera.bottom = -height / 2;
+        tCamera.updateProjectionMatrix();
+        tRenderer.setSize(width, height);
+
+        tScene.children.forEach(mesh => { mesh.visible = mesh.position.z < 5; });
+        tRenderer.clear();
+        tRenderer.render(tScene, tCamera);
+        ctx.drawImage(threeCanvas, 0, 0);
+
+        layers.forEach(layer => {
+            if (!layer.visible) return;
+
+            ctx.save();
+            let fontStyle = '';
+            if (layer.isItalic) fontStyle += 'italic ';
+            if (layer.isBold) fontStyle += 'bold ';
+            fontStyle += `${layer.fontSize}px ${layer.fontFamily}`;
+            ctx.font = fontStyle;
+            ctx.fillStyle = layer.textColor;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            const lines = layer.text.split('\n');
+            const lineHeight = layer.fontSize * 1.3;
+            const totalHeight = lineHeight * lines.length;
+            const baseX = (width / 2) + layer.posX;
+            const baseY = (height / 2) - layer.posY;
+
+            let maxLineWidth = 0;
+            lines.forEach((line, index) => {
+                const currentY = baseY - (totalHeight / 2) + (index * lineHeight) + (lineHeight / 2);
+                ctx.fillText(line, baseX, currentY);
+                const textWidth = ctx.measureText(line).width;
+                if (textWidth > maxLineWidth) maxLineWidth = textWidth;
+
+                if (layer.isUnderline) {
+                    ctx.beginPath(); ctx.strokeStyle = layer.textColor; ctx.lineWidth = Math.max(1.5, layer.fontSize * 0.04);
+                    const startXLine = baseX - (textWidth / 2); const underlineY = currentY + (layer.fontSize / 2) * 0.8;
+                    ctx.moveTo(startXLine, underlineY); ctx.lineTo(startXLine + textWidth, underlineY); ctx.stroke();
+                }
+            });
+
+            layer.bounds = {
+                minX: baseX - (maxLineWidth / 2),
+                maxX: baseX + (maxLineWidth / 2),
+                minY: baseY - (totalHeight / 2),
+                maxY: baseY + (totalHeight / 2)
+            };
+
+            if (isDragging && activeLayerType === 'text' && dragTargetLayer === layer) {
+                renderPrecisionGuide(layer.bounds.minX-10, layer.bounds.minY-5, maxLineWidth+20, totalHeight+10, layer.textColor);
+            }
+            ctx.restore();
+        });
+
+        tScene.children.forEach(mesh => { mesh.visible = mesh.position.z >= 5; });
+        tRenderer.clear();
+        tRenderer.render(tScene, tCamera);
+        ctx.drawImage(threeCanvas, 0, 0);
+
+        if (isDragging && activeLayerType === 'shape' && dragTargetLayer) {
+            const cx = (width / 2) + dragTargetLayer.posX;
+            const cy = (height / 2) - dragTargetLayer.posY;
+            const size = dragTargetLayer.radius;
+            renderPrecisionGuide(cx - size, cy - size, size * 2, size * 2, dragTargetLayer.color);
+        }
+    }
+
+    function renderPrecisionGuide(x, y, w, h, color) {
+        ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 1; ctx.globalAlpha = 0.6;
+        ctx.strokeRect(x, y, w, h);
+        const cross = (cx, cy) => {
+            ctx.beginPath(); ctx.moveTo(cx-4, cy); ctx.lineTo(cx+4, cy); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(cx, cy-4); ctx.lineTo(cx, cy+4); ctx.stroke();
+        };
+        cross(x, y); cross(x+w, y); cross(x, y+h); cross(x+w, y+h);
+        ctx.restore();
+    }
+
+    canvasContainer.addEventListener('mousedown', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const clickX = (e.clientX - rect.left) * scaleX;
+        const clickY = (e.clientY - rect.top) * scaleY;
+
+        dragTargetLayer = null;
+
+        if (activeLayerType === 'text') {
+            for (let i = layers.length - 1; i >= 0; i--) {
+                const l = layers[i];
+                if (l.visible && l.bounds && clickX >= l.bounds.minX && clickX <= l.bounds.maxX && clickY >= l.bounds.minY && clickY <= l.bounds.maxY) {
+                    dragTargetLayer = l; break;
+                }
+            }
+        } else if (activeLayerType === 'shape') {
+            for (let i = shapes.length - 1; i >= 0; i--) {
+                const s = shapes[i]; if (!s.visible) continue;
+                const sx = (canvas.width / 2) + s.posX;
+                const sy = (canvas.height / 2) - s.posY;
+                const dist = Math.sqrt((clickX - sx)**2 + (clickY - sy)**2);
+                if (dist <= Math.max(s.radius, 40)) { dragTargetLayer = s; break; }
+            }
+        }
+
+        if (dragTargetLayer) {
+            isDragging = true; startX = e.clientX; startY = e.clientY;
+            setActiveLayer(activeLayerType, dragTargetLayer.id);
+        }
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging || !dragTargetLayer) return;
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+
+        const deltaX = (e.clientX - startX) * scaleX;
+        const deltaY = (e.clientY - startY) * scaleY;
+
+        dragTargetLayer.posX = Math.round((dragTargetLayer.posX || 0) + deltaX);
+        dragTargetLayer.posY = Math.round((dragTargetLayer.posY || 0) - deltaY);
+
+        startX = e.clientX; startY = e.clientY;
+
+        if (activeLayerType === 'text') {
+            const item = layerListContainer.querySelector(`[data-id="${dragTargetLayer.id}"]`);
+            if (item) { item.querySelector('.layer-x-input').value = dragTargetLayer.posX; item.querySelector('.layer-y-input').value = dragTargetLayer.posY; }
+        }
+        drawThumbnail();
+    });
+
+    window.addEventListener('mouseup', () => {
+        if (isDragging && dragTargetLayer) {
+            isDragging = false;
+
+            const width = parseInt(canvasWidthInput.value) || 1200;
+            const height = parseInt(canvasHeightInput.value) || 630;
+            const divX = Math.max(1, parseInt(gridDivXInput.value) || 12);
+            const divY = Math.max(1, parseInt(gridDivYInput.value) || 12);
+            const stepX = width / divX;
+            const stepY = height / divY;
+
+            const absX = (width / 2) + dragTargetLayer.posX;
+            const absY = (height / 2) - dragTargetLayer.posY;
+
+            const snappedX = Math.round(absX / stepX) * stepX;
+            const snappedY = Math.round(absY / stepY) * stepY;
+
+            dragTargetLayer.posX = Math.round(snappedX - (width / 2));
+            dragTargetLayer.posY = Math.round((height / 2) - snappedY);
+
+            dragTargetLayer = null;
+            renderLayerList(); renderShapeList(); drawThumbnail(); saveHistory();
+        }
+    });
+
+    function exportImage(format, extension) {
+        isDragging = false; drawThumbnail();
+        const link = document.createElement('a');
+        let filename = fileNameInput.value.trim() || 'thumbnail';
+        link.download = `${filename}.${extension}`;
+        link.href = canvas.toDataURL(format, format === 'image/webp' ? 0.9 : undefined);
+        link.click();
+    }
+
+    downloadWebPBtn.addEventListener('click', () => exportImage('image/webp', 'webp'));
+    downloadPNGBtn.addEventListener('click', () => exportImage('image/png', 'png'));
+
+</script>
+
+</body>
+</html>
