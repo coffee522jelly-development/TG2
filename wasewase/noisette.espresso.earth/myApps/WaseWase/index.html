@@ -47,16 +47,16 @@
             </div>
             <select id="presetSelect" class="w-full bg-[#f1f5f9] dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 px-2 py-1 outline-none text-[11px] focus:border-blue-500">
                 <option value="" disabled selected>-- プリセットを選択 --</option>
-                <option value="0">01: Modern Tech</option>
-                <option value="1">02: Pop & Cute</option>
-                <option value="2">03: Dark Hacker</option>
-                <option value="3">04: Elegant Corporate</option>
-                <option value="4">05: Retro Game</option>
-                <option value="5">06: Cyberpunk</option>
-                <option value="6">07: Natural Calm</option>
-                <option value="7">08: YouTube Thumbnail</option>
-                <option value="8">09: Presentation Slide</option>
-                <option value="9">10: Minimalist</option>
+                <option value="0">01: Modern Corporate</option>
+                <option value="1">02: Chic Minimalist</option>
+                <option value="2">03: Tech Startup</option>
+                <option value="3">04: Executive Seminar</option>
+                <option value="4">05: Elegant Architecture</option>
+                <option value="5">06: Financial Review</option>
+                <option value="6">07: Dark Analytics</option>
+                <option value="7">08: Brand Identity</option>
+                <option value="8">09: Monotone Typography</option>
+                <option value="9">10: Premium Product</option>
             </select>
         </div>
 
@@ -191,133 +191,131 @@
 
     const presets = [
         {
-            name: "Modern Tech",
+            name: "Modern Corporate",
             layers: [
-                { id: 1, text: "MODERN TECH", fontFamily: "'Oswald', sans-serif", fontSize: 80, textColor: "#ffffff", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
-                { id: 2, text: "NEW RELEASE 2024", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 24, textColor: "#0ea5e9", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
+                { id: 1, text: "NEXT GEN", fontFamily: "'Oswald', sans-serif", fontSize: 80, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: -150, posY: -40, visible: true },
+                { id: 2, text: "CORPORATE SOLUTIONS", fontFamily: "'Montserrat', sans-serif", fontSize: 35, textColor: "#3b82f6", isBold: true, isItalic: false, isUnderline: false, posX: 30, posY: 30, visible: true },
+                { id: 3, text: "Strategy & Innovation 2025", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#64748b", isBold: false, isItalic: false, isUnderline: false, posX: -30, posY: 90, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 300, color: '#0f172a', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'circle', radius: 250, color: '#0ea5e9', posX: -400, posY: 150, visible: true, isFront: false },
-                { id: 3, type: 'line', radius: 400, color: '#e2e8f0', posX: -200, posY: -100, visible: true, isFront: true, angle: 45, thick: 2 }
+                { id: 1, type: 'rect', radius: 800, color: '#f8fafc', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'line', radius: 400, color: '#e2e8f0', posX: -200, posY: -100, visible: true, isFront: false, angle: -15, thick: 2 },
+                { id: 3, type: 'circle', radius: 250, color: '#dbeafe', posX: 400, posY: -200, visible: true, isFront: false }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#1e293b", gridDivX: 12, gridDivY: 12
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
         },
         {
-            name: "Pop & Cute",
+            name: "Chic Minimalist",
             layers: [
-                { id: 1, text: "カワイイデザイン", fontFamily: "'Hachi Maru Pop', cursive", fontSize: 70, textColor: "#fb7185", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -30, visible: true },
-                { id: 2, text: "POP & CUTE", fontFamily: "'Montserrat', sans-serif", fontSize: 30, textColor: "#fcd34d", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: 50, visible: true }
+                { id: 1, text: "Simplicity.", fontFamily: "'Playfair Display', serif", fontSize: 90, textColor: "#0f172a", isBold: false, isItalic: true, isUnderline: false, posX: 0, posY: -20, visible: true },
+                { id: 2, text: "The ultimate sophistication", fontFamily: "'Montserrat', sans-serif", fontSize: 24, textColor: "#94a3b8", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 60, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'circle', radius: 180, color: '#fbcfe8', posX: 300, posY: 100, visible: true, isFront: false },
-                { id: 2, type: 'star', radius: 100, color: '#fde047', posX: -350, posY: -120, visible: true, isFront: false },
-                { id: 3, type: 'circle', radius: 50, color: '#6ee7b7', posX: -200, posY: 150, visible: true, isFront: true }
+                { id: 1, type: 'rect', radius: 800, color: '#f1f5f9', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'circle', radius: 15, color: '#334155', posX: 0, posY: 120, visible: true, isFront: false }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#fff1f2", gridDivX: 10, gridDivY: 10
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 4, gridDivY: 4
         },
         {
-            name: "Dark Hacker",
+            name: "Tech Startup",
             layers: [
-                { id: 1, text: "SYSTEM OVERRIDE", fontFamily: "'DotGothic16', sans-serif", fontSize: 60, textColor: "#22c55e", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
-                { id: 2, text: "> access granted_", fontFamily: "'DotGothic16', sans-serif", fontSize: 28, textColor: "#16a34a", isBold: false, isItalic: false, isUnderline: false, posX: -150, posY: 40, visible: true }
+                { id: 1, text: "DATA DRIVEN", fontFamily: "'Oswald', sans-serif", fontSize: 85, textColor: "#ffffff", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -50, visible: true },
+                { id: 2, text: "GROWTH", fontFamily: "'Oswald', sans-serif", fontSize: 85, textColor: "#14b8a6", isBold: true, isItalic: false, isUnderline: false, posX: 150, posY: 30, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 800, color: '#0f172a', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'rect', radius: 150, color: '#1e293b', posX: -200, posY: -50, visible: true, isFront: false },
+                { id: 3, type: 'line', radius: 600, color: '#0f766e', posX: 0, posY: 150, visible: true, isFront: true, angle: -10, thick: 4 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#020617", gridDivX: 16, gridDivY: 16
+        },
+        {
+            name: "Executive Seminar",
+            layers: [
+                { id: 1, text: "EXECUTIVE", fontFamily: "'Playfair Display', serif", fontSize: 50, textColor: "#cbd5e1", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: -80, visible: true },
+                { id: 2, text: "LEADERSHIP SUMMIT", fontFamily: "'Montserrat', sans-serif", fontSize: 45, textColor: "#ffffff", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
+                { id: 3, text: "2024.11.15 | TOKYO, JAPAN", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 22, textColor: "#94a3b8", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 60, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 800, color: '#0f172a', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'line', radius: 150, color: '#475569', posX: -75, posY: 20, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#000000", gridDivX: 8, gridDivY: 8
+        },
+        {
+            name: "Elegant Architecture",
+            layers: [
+                { id: 1, text: "STRUCTURE", fontFamily: "'Montserrat', sans-serif", fontSize: 75, textColor: "#334155", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "DESIGN", fontFamily: "'Playfair Display', serif", fontSize: 75, textColor: "#94a3b8", isBold: false, isItalic: true, isUnderline: false, posX: 150, posY: 50, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 800, color: '#e2e8f0', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'rect', radius: 250, color: '#cbd5e1', posX: -250, posY: 100, visible: true, isFront: false },
+                { id: 3, type: 'line', radius: 500, color: '#ffffff', posX: 0, posY: -150, visible: true, isFront: true, angle: 90, thick: 5 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Financial Review",
+            layers: [
+                { id: 1, text: "ANNUAL REPORT", fontFamily: "'Oswald', sans-serif", fontSize: 70, textColor: "#ffffff", isBold: true, isItalic: false, isUnderline: false, posX: -200, posY: -40, visible: true },
+                { id: 2, text: "FY 2024", fontFamily: "'Montserrat', sans-serif", fontSize: 35, textColor: "#64748b", isBold: false, isItalic: false, isUnderline: false, posX: -200, posY: 20, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 800, color: '#1e293b', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'sector', radius: 300, color: '#0ea5e9', posX: 350, posY: 50, visible: true, isFront: false, angle: 135 },
+                { id: 3, type: 'sector', radius: 290, color: '#334155', posX: 360, posY: 60, visible: true, isFront: false, angle: 60 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#0f172a", gridDivX: 16, gridDivY: 16
+        },
+        {
+            name: "Dark Analytics",
+            layers: [
+                { id: 1, text: "MARKET INSIGHTS", fontFamily: "'Montserrat', sans-serif", fontSize: 60, textColor: "#e2e8f0", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -30, visible: true },
+                { id: 2, text: "Deep Dive Analysis into Q4 Trends", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 24, textColor: "#818cf8", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
             ],
             shapes: [
                 { id: 1, type: 'rect', radius: 800, color: '#000000', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'line', radius: 1200, color: '#166534', posX: -600, posY: -100, visible: true, isFront: false, angle: 0, thick: 1 },
-                { id: 3, type: 'line', radius: 1200, color: '#166534', posX: -600, posY: 0, visible: true, isFront: false, angle: 0, thick: 1 },
-                { id: 4, type: 'line', radius: 1200, color: '#166534', posX: -600, posY: 100, visible: true, isFront: false, angle: 0, thick: 1 }
+                { id: 2, type: 'circle', radius: 400, color: '#1e1b4b', posX: -300, posY: -200, visible: true, isFront: false },
+                { id: 3, type: 'line', radius: 1000, color: '#4338ca', posX: -500, posY: 100, visible: true, isFront: true, angle: 15, thick: 2 }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#050505", gridDivX: 20, gridDivY: 20
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#050505", gridDivX: 24, gridDivY: 24
         },
         {
-            name: "Elegant Corporate",
+            name: "Brand Identity",
             layers: [
-                { id: 1, text: "Corporate Strategy", fontFamily: "'Playfair Display', serif", fontSize: 65, textColor: "#1e3a8a", isBold: false, isItalic: true, isUnderline: false, posX: 0, posY: -30, visible: true },
-                { id: 2, text: "Business Solutions for 2024", fontFamily: "'Montserrat', sans-serif", fontSize: 20, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 30, visible: true }
+                { id: 1, text: "brand.", fontFamily: "'Playfair Display', serif", fontSize: 80, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -50, posY: 0, visible: true },
+                { id: 2, text: "EST. 2024", fontFamily: "'Montserrat', sans-serif", fontSize: 18, textColor: "#64748b", isBold: false, isItalic: false, isUnderline: false, posX: 150, posY: 30, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 400, color: '#ffffff', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'line', radius: 300, color: '#dbeafe', posX: -150, posY: -90, visible: true, isFront: false, angle: 0, thick: 2 },
-                { id: 3, type: 'circle', radius: 300, color: '#bfdbfe', posX: 500, posY: 200, visible: true, isFront: false }
+                { id: 1, type: 'rect', radius: 800, color: '#ffffff', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'rect', radius: 200, color: '#f1f5f9', posX: -150, posY: -50, visible: true, isFront: false }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 8, gridDivY: 8
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 6, gridDivY: 6
         },
         {
-            name: "Retro Game",
+            name: "Monotone Typography",
             layers: [
-                { id: 1, text: "PRESS START", fontFamily: "'DotGothic16', sans-serif", fontSize: 80, textColor: "#facc15", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: 0, visible: true },
-                { id: 2, text: "LEVEL 1", fontFamily: "'DotGothic16', sans-serif", fontSize: 30, textColor: "#ffffff", isBold: false, isItalic: false, isUnderline: false, posX: -400, posY: -250, visible: true },
-                { id: 3, text: "SCORE: 000000", fontFamily: "'DotGothic16', sans-serif", fontSize: 30, textColor: "#ffffff", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: -250, visible: true }
+                { id: 1, text: "AESTHETIC", fontFamily: "'Oswald', sans-serif", fontSize: 120, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -10, visible: true },
+                { id: 2, text: "TYPOGRAPHY", fontFamily: "'Oswald', sans-serif", fontSize: 120, textColor: "#f8fafc", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: 90, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 600, color: '#1e1b4b', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'triangle', radius: 50, color: '#ef4444', posX: -250, posY: 0, visible: true, isFront: true }
+                { id: 1, type: 'rect', radius: 1200, color: '#e2e8f0', posX: 0, posY: -160, visible: true, isFront: false },
+                { id: 2, type: 'rect', radius: 1200, color: '#475569', posX: 0, posY: 160, visible: true, isFront: false }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#312e81", gridDivX: 16, gridDivY: 16
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 10, gridDivY: 10
         },
         {
-            name: "Cyberpunk",
+            name: "Premium Product",
             layers: [
-                { id: 1, text: "NEON CITY", fontFamily: "'Dela Gothic One', cursive", fontSize: 75, textColor: "#f0abfc", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
-                { id: 2, text: "NIGHT RUNNER", fontFamily: "'Oswald', sans-serif", fontSize: 25, textColor: "#2dd4bf", isBold: true, isItalic: true, isUnderline: false, posX: 100, posY: 50, visible: true }
+                { id: 1, text: "Premium Collection", fontFamily: "'Shippori Mincho', serif", fontSize: 55, textColor: "#f8fafc", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
+                { id: 2, text: "洗練された大人のためのデザイン", fontFamily: "'Shippori Mincho', serif", fontSize: 20, textColor: "#94a3b8", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 600, color: '#2e1065', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'line', radius: 800, color: '#d946ef', posX: -400, posY: 100, visible: true, isFront: true, angle: -15, thick: 8 },
-                { id: 3, type: 'line', radius: 800, color: '#14b8a6', posX: -400, posY: -50, visible: true, isFront: true, angle: 15, thick: 4 }
+                { id: 1, type: 'rect', radius: 800, color: '#020617', posX: 0, posY: 0, visible: true, isFront: false },
+                { id: 2, type: 'ring', radius: 300, color: '#334155', posX: 0, posY: 0, visible: true, isFront: false }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#17052e", gridDivX: 14, gridDivY: 14
-        },
-        {
-            name: "Natural Calm",
-            layers: [
-                { id: 1, text: "Organic Design", fontFamily: "'Shippori Mincho', serif", fontSize: 60, textColor: "#166534", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
-                { id: 2, text: "Natural Elements & Calmness", fontFamily: "'Shippori Mincho', serif", fontSize: 22, textColor: "#4d7c0f", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'circle', radius: 350, color: '#dcfce7', posX: -300, posY: -100, visible: true, isFront: false },
-                { id: 2, type: 'circle', radius: 200, color: '#bbf7d0', posX: 350, posY: 150, visible: true, isFront: false },
-                { id: 3, type: 'sector', radius: 150, color: '#86efac', posX: -100, posY: 200, visible: true, isFront: false, angle: 120 }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f0fdf4", gridDivX: 6, gridDivY: 6
-        },
-        {
-            name: "YouTube Thumbnail",
-            layers: [
-                { id: 1, text: "衝撃の真実！", fontFamily: "'Dela Gothic One', cursive", fontSize: 80, textColor: "#ef4444", isBold: false, isItalic: false, isUnderline: true, posX: 0, posY: -50, visible: true },
-                { id: 2, text: "これはヤバい...", fontFamily: "'M PLUS 1p', sans-serif", fontSize: 45, textColor: "#ffffff", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: 50, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 600, color: '#1e293b', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'star', radius: 150, color: '#f59e0b', posX: -350, posY: -100, visible: true, isFront: true },
-                { id: 3, type: 'star', radius: 80, color: '#f59e0b', posX: 400, posY: 150, visible: true, isFront: true }
-            ],
-            canvasWidth: 1280, canvasHeight: 720, bgColor: "#0f172a", gridDivX: 12, gridDivY: 12
-        },
-        {
-            name: "Presentation Slide",
-            layers: [
-                { id: 1, text: "Quarterly Results", fontFamily: "'Montserrat', sans-serif", fontSize: 50, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -150, posY: -100, visible: true },
-                { id: 2, text: "Q3 2024 Performance Review", fontFamily: "'Montserrat', sans-serif", fontSize: 24, textColor: "#64748b", isBold: false, isItalic: false, isUnderline: false, posX: -150, posY: -40, visible: true },
-                { id: 3, text: "+ 25% Growth", fontFamily: "'Oswald', sans-serif", fontSize: 40, textColor: "#10b981", isBold: true, isItalic: false, isUnderline: false, posX: 200, posY: 50, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 600, color: '#ffffff', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'line', radius: 800, color: '#e2e8f0', posX: -400, posY: 0, visible: true, isFront: false, angle: 0, thick: 2 },
-                { id: 3, type: 'rect', radius: 150, color: '#f8fafc', posX: 200, posY: 50, visible: true, isFront: false }
-            ],
-            canvasWidth: 1280, canvasHeight: 720, bgColor: "#f1f5f9", gridDivX: 16, gridDivY: 9
-        },
-        {
-            name: "Minimalist",
-            layers: [
-                { id: 1, text: "less is more.", fontFamily: "'Montserrat', sans-serif", fontSize: 40, textColor: "#333333", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 0, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'circle', radius: 10, color: '#ef4444', posX: 0, posY: 50, visible: true, isFront: false }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 4, gridDivY: 4
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#000000", gridDivX: 12, gridDivY: 12
         }
     ];
 
@@ -583,15 +581,11 @@
                     <option value="'Noto Sans JP', sans-serif" ${layer.fontFamily==="'Noto Sans JP', sans-serif"?'selected':''}>Noto Sans JP</option>
                     <option value="'Montserrat', sans-serif" ${layer.fontFamily==="'Montserrat', sans-serif"?'selected':''}>Montserrat</option>
                     <option value="'M PLUS 1p', sans-serif" ${layer.fontFamily==="'M PLUS 1p', sans-serif"?'selected':''}>M PLUS 1p</option>
-                    <option value="'DotGothic16', sans-serif" ${layer.fontFamily==="'DotGothic16', sans-serif"?'selected':''}>DotGothic16</option>
                 </optgroup>
                 <optgroup label="SERIF / CLASSIC">
                     <option value="'Playfair Display', serif" ${layer.fontFamily==="'Playfair Display', serif"?'selected':''}>Playfair Display</option>
                     <option value="'Shippori Mincho', serif" ${layer.fontFamily==="'Shippori Mincho', serif"?'selected':''}>Shippori Mincho</option>
-                </optgroup>
-                <optgroup label="CREATIVE / POP">
-                    <option value="'Hachi Maru Pop', cursive" ${layer.fontFamily==="'Hachi Maru Pop', cursive"?'selected':''}>Hachi Maru Pop</option>
-                    <option value="'Dela Gothic One', cursive" ${layer.fontFamily==="'Dela Gothic One', cursive"?'selected':''}>Dela Gothic One</option>
+                    <option value="'Noto Serif JP', serif" ${layer.fontFamily==="'Noto Serif JP', serif"?'selected':''}>Noto Serif JP</option>
                 </optgroup>
             `;
 
