@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    wasewase_desktop_lib::run()
+    cortado_desktop_lib::run()
 }

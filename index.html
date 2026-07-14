@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAD-Style Multi-Layer Generator with Three.js</title>
+    <title>Cortado - CAD-Style Multi-Layer Generator with Three.js</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -555,7 +555,7 @@
                 bgColor: bgColorInput.value, gridDivX: gridDivXInput.value, gridDivY: gridDivYInput.value,
                 fileName: fileNameInput.value
             };
-            localStorage.setItem('cadThumbnailGenState', JSON.stringify(state));
+            localStorage.setItem('cortadoState', JSON.stringify(state));
         } catch (e) {
             console.warn("ローカル環境のセキュリティ制限により保存スキップ:", e);
         }
@@ -563,7 +563,7 @@
 
     function loadFromLocalStorage() {
         try {
-            const saved = localStorage.getItem('cadThumbnailGenState');
+            const saved = localStorage.getItem('cortadoState');
             if (saved) {
                 const state = JSON.parse(saved);
                 layers = state.layers || layers;
@@ -937,7 +937,7 @@
 
     resetBtn.addEventListener('click', () => {
         if (confirm('プロジェクトを初期化しますか？保存されたデータは完全に消去されます。')) {
-            localStorage.removeItem('cadThumbnailGenState');
+            localStorage.removeItem('cortadoState');
             location.reload();
         }
     });

@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "WaseWase Desktop",
+  "productName": "Cortado Desktop",
   "version": "1.0.0",
-  "identifier": "com.noisette.wasewase",
+  "identifier": "com.noisette.cortado",
   "build": {
     "frontendDist": "../src"
   },
@@ -10,7 +10,7 @@
     "withGlobalTauri": true,
     "windows": [
       {
-        "title": "WaseWase",
+        "title": "Cortado",
         "width": 1280,
         "height": 800
       }

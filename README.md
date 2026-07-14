@@ -1,6 +1,6 @@
-# WaseWase - CAD-Style Multi-Layer Thumbnail Generator
+# Cortado - CAD-Style Multi-Layer Thumbnail Generator
 
-WaseWaseは、Webブラウザ上で動作する高度なサムネイルジェネレーターです。
+Cortadoは、Webブラウザ上で動作する高度なサムネイルジェネレーターです。
 Three.jsによる3Dグラフィックスと、2D Canvasによるテキストレンダリングを組み合わせた、CADスタイルの独自のレイヤー編集体験を提供します。
 
 ## 主な機能
