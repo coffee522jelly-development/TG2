@@ -78,6 +78,19 @@
             <div class="text-[11px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase border-b border-slate-200 dark:border-slate-700 pb-1 mb-2">
                 [01] CANVAS PROPERTIES
             </div>
+            <div class="mb-2">
+                <span class="block text-[10px] opacity-60 mb-0.5">SIZE PRESETS</span>
+                <select id="sizePresetSelect" class="w-full bg-[#f1f5f9] dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 px-2 py-1 outline-none text-[11px] focus:border-blue-500 mb-1">
+                    <option value="" disabled selected>-- サイズを選択 --</option>
+                    <option value="1200,630">1.91:1 (1200x630) OGP</option>
+                    <option value="1280,720">16:9 (1280x720) YouTube</option>
+                    <option value="1920,1080">16:9 (1920x1080) FHD</option>
+                    <option value="1080,1080">1:1 (1080x1080) Instagram</option>
+                    <option value="1080,1350">4:5 (1080x1350) Portrait</option>
+                    <option value="1080,1920">9:16 (1080x1920) Story/Reels</option>
+                    <option value="800,600">4:3 (800x600) Classic</option>
+                </select>
+            </div>
             <div class="grid grid-cols-2 gap-2 mb-2">
                 <div>
                     <span class="block text-[10px] opacity-60 mb-0.5">WIDTH (PX)</span>
@@ -187,6 +200,7 @@
     const gridDivXInput = document.getElementById('gridDivX');
     const gridDivYInput = document.getElementById('gridDivY');
     const fileNameInput = document.getElementById('fileName');
+    const sizePresetSelect = document.getElementById('sizePresetSelect');
 
     const downloadWebPBtn = document.getElementById('downloadWebP');
     const downloadPNGBtn = document.getElementById('downloadPNG');
@@ -878,6 +892,18 @@
 
     [canvasWidthInput, canvasHeightInput, gridDivXInput, gridDivYInput].forEach(input => {
         input.addEventListener('change', () => { drawThumbnail(); saveHistory(); });
+    });
+
+    sizePresetSelect.addEventListener('change', (e) => {
+        if (!e.target.value) return;
+        const [w, h] = e.target.value.split(',').map(Number);
+        if (w && h) {
+            canvasWidthInput.value = w;
+            canvasHeightInput.value = h;
+            drawThumbnail();
+            saveHistory();
+        }
+        e.target.value = ""; // Reset selector
     });
 
     presetSelect.addEventListener('change', (e) => {
