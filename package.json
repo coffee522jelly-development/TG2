@@ -1,0 +1,26 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Cortadoは、Webブラウザ上で動作する高度なサムネイルジェネレーターです。 Three.jsによる3Dグラフィックスと、2D Canvasによるテキストレンダリングを組み合わせた、CADスタイルの独自のレイヤー編集体験を提供します。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coffee522jelly-development/TG2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/coffee522jelly-development/TG2/issues"
+  },
+  "homepage": "https://github.com/coffee522jelly-development/TG2#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.5.3",
+    "postcss": "^8.5.19",
+    "tailwindcss": "^3.4.1"
+  }
+}
