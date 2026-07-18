@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "identifier": "com.noisette.cortado",
   "build": {
-    "frontendDist": "../../"
+    "beforeBuildCommand": "node ../build.js",
+    "frontendDist": "../../dist"
   },
   "app": {
     "withGlobalTauri": true,
