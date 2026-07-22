@@ -32,31 +32,67 @@
                 [00] DESIGN PRESETS
             </div>
             <select id="presetSelect" class="w-full bg-[#f1f5f9] dark:bg-[#0f172a] border border-slate-300 dark:border-slate-700 px-2 py-1 outline-none text-[11px] focus:border-blue-500">
-<option value="" disabled selected>-- プリセットを選択 --</option>
-                <option value="0">01: Modern Corporate</option>
-                <option value="1">02: Chic Minimalist</option>
-                <option value="2">03: Tech Startup</option>
-                <option value="3">04: Executive Seminar</option>
-                <option value="4">05: Elegant Architecture</option>
-                <option value="5">06: Financial Review</option>
-                <option value="6">07: Dark Analytics</option>
-                <option value="7">08: Brand Identity</option>
-                <option value="8">09: Monotone Typography</option>
-                <option value="9">10: Premium Product</option>
-                <option value="10">11: Clean Workspace</option>
-                <option value="11">12: Luxury Real Estate</option>
-                <option value="12">13: Data Science</option>
-                <option value="13">14: Legal Consulting</option>
-                <option value="14">15: Creative Agency</option>
-                <option value="15">16: Healthcare Innovation</option>
-                <option value="16">17: Sustainable Energy</option>
-                <option value="17">18: Global Logistics</option>
-                <option value="18">19: Wealth Management</option>
-                <option value="19">20: Cyber Security</option>
-                <option value="20">21: E-commerce Strategy</option>
-                <option value="21">22: HR Leadership</option>
-                <option value="22">23: Fine Dining</option>
-                <option value="23">24: Art Exhibition</option>
+                <option value="" disabled selected>-- プリセットを選択 --</option>
+                <optgroup label="Corporate & Business">
+                    <option value="0">01: Executive Summary</option>
+                    <option value="1">02: Quarterly Review</option>
+                    <option value="2">03: Strategic Vision</option>
+                    <option value="3">04: Global Logistics</option>
+                    <option value="4">05: B2B Networking</option>
+                    <option value="5">06: Board Meeting</option>
+                    <option value="6">07: Agile Development</option>
+                    <option value="7">08: Financial Report</option>
+                    <option value="8">09: Compliance Advisory</option>
+                    <option value="9">10: Market Analysis</option>
+                </optgroup>
+                <optgroup label="Tech & Innovation">
+                    <option value="10">11: AI Integration</option>
+                    <option value="11">12: Cyber Security</option>
+                    <option value="12">13: Data Science</option>
+                    <option value="13">14: Tech Startup</option>
+                    <option value="14">15: Cloud Architecture</option>
+                    <option value="15">16: Web3 Concepts</option>
+                    <option value="16">17: Quantum Computing</option>
+                    <option value="17">18: Deep Learning</option>
+                    <option value="18">19: IoT Solutions</option>
+                    <option value="19">20: Robotic Automation</option>
+                </optgroup>
+                <optgroup label="Minimal & Chic">
+                    <option value="20">21: Monochrome Aesthetic</option>
+                    <option value="21">22: Clean Workspace</option>
+                    <option value="22">23: White Space</option>
+                    <option value="23">24: Typography Focus</option>
+                    <option value="24">25: Scandinavian Design</option>
+                    <option value="25">26: Less is More</option>
+                    <option value="26">27: Serene Calm</option>
+                    <option value="27">28: Essential Elements</option>
+                    <option value="28">29: Elegant Void</option>
+                    <option value="29">30: Silent Luxury</option>
+                </optgroup>
+                <optgroup label="Lifestyle & Premium">
+                    <option value="30">31: Fine Dining</option>
+                    <option value="31">32: Luxury Real Estate</option>
+                    <option value="32">33: High-End Fashion</option>
+                    <option value="33">34: Exclusive Spa</option>
+                    <option value="34">35: Boutique Hotel</option>
+                    <option value="35">36: Private Collection</option>
+                    <option value="36">37: Artisan Craft</option>
+                    <option value="37">38: Organic Beauty</option>
+                    <option value="38">39: Modern Architecture</option>
+                    <option value="39">40: Vintage Heritage</option>
+                </optgroup>
+                <optgroup label="Academic & Smart">
+                    <option value="40">41: Research Paper</option>
+                    <option value="41">42: Intellectual Debate</option>
+                    <option value="42">43: Philosophy Lecture</option>
+                    <option value="43">44: Economics Seminar</option>
+                    <option value="44">45: Sociology Forum</option>
+                    <option value="45">46: Historical Review</option>
+                    <option value="46">47: Logic & Reason</option>
+                    <option value="47">48: Law Perspective</option>
+                    <option value="48">49: Medical Symposium</option>
+                    <option value="49">50: Scientific Discovery</option>
+                </optgroup>
             </select>
         </div>
 
@@ -207,307 +243,654 @@
 
     const presets = [
         {
-            name: "Modern Corporate",
+            name: "Executive Summary",
             layers: [
-                { id: 1, text: "NEXT GEN", fontFamily: "'Oswald', sans-serif", fontSize: 80, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: -150, posY: -40, visible: true },
-                { id: 2, text: "CORPORATE SOLUTIONS", fontFamily: "'Montserrat', sans-serif", fontSize: 35, textColor: "#3b82f6", isBold: true, isItalic: false, isUnderline: false, posX: 30, posY: 30, visible: true },
-                { id: 3, text: `Strategy & Innovation ${new Date().getFullYear()}`, fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#64748b", isBold: false, isItalic: false, isUnderline: false, posX: -30, posY: 90, visible: true }
+                { id: 1, text: "EXECUTIVE SUMMARY", fontFamily: "'Montserrat', sans-serif", fontSize: 60, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Montserrat', sans-serif", fontSize: 16, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#f8fafc', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'line', radius: 400, color: '#e2e8f0', posX: -200, posY: -100, visible: true, isFront: false, angle: -15, thick: 2 },
-                { id: 3, type: 'circle', radius: 250, color: '#dbeafe', posX: 400, posY: -200, visible: true, isFront: false }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
-        },
-        {
-            name: "Chic Minimalist",
-            layers: [
-                { id: 1, text: "Simplicity.", fontFamily: "'Playfair Display', serif", fontSize: 90, textColor: "#0f172a", isBold: false, isItalic: true, isUnderline: false, posX: 0, posY: -20, visible: true },
-                { id: 2, text: "The ultimate sophistication", fontFamily: "'Montserrat', sans-serif", fontSize: 24, textColor: "#94a3b8", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 60, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#f1f5f9', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'circle', radius: 15, color: '#334155', posX: 0, posY: 120, visible: true, isFront: false }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 4, gridDivY: 4
-        },
-        {
-            name: "Tech Startup",
-            layers: [
-                { id: 1, text: "DATA DRIVEN", fontFamily: "'Oswald', sans-serif", fontSize: 85, textColor: "#ffffff", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -50, visible: true },
-                { id: 2, text: "GROWTH", fontFamily: "'Oswald', sans-serif", fontSize: 85, textColor: "#14b8a6", isBold: true, isItalic: false, isUnderline: false, posX: 150, posY: 30, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#0f172a', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'rect', radius: 150, color: '#1e293b', posX: -200, posY: -50, visible: true, isFront: false },
-                { id: 3, type: 'line', radius: 600, color: '#0f766e', posX: 0, posY: 150, visible: true, isFront: true, angle: -10, thick: 4 }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#020617", gridDivX: 16, gridDivY: 16
-        },
-        {
-            name: "Executive Seminar",
-            layers: [
-                { id: 1, text: "EXECUTIVE", fontFamily: "'Playfair Display', serif", fontSize: 50, textColor: "#cbd5e1", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: -80, visible: true },
-                { id: 2, text: "LEADERSHIP SUMMIT", fontFamily: "'Montserrat', sans-serif", fontSize: 45, textColor: "#ffffff", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
-                { id: 3, text: `${new Date().getFullYear()}.11.15 | TOKYO, JAPAN`, fontFamily: "'Noto Sans JP', sans-serif", fontSize: 22, textColor: "#94a3b8", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 60, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#0f172a', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'line', radius: 150, color: '#475569', posX: -75, posY: 20, visible: true, isFront: true, angle: 0, thick: 1 }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#000000", gridDivX: 8, gridDivY: 8
-        },
-        {
-            name: "Elegant Architecture",
-            layers: [
-                { id: 1, text: "STRUCTURE", fontFamily: "'Montserrat', sans-serif", fontSize: 75, textColor: "#334155", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
-                { id: 2, text: "DESIGN", fontFamily: "'Playfair Display', serif", fontSize: 75, textColor: "#94a3b8", isBold: false, isItalic: true, isUnderline: false, posX: 150, posY: 50, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#e2e8f0', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'rect', radius: 250, color: '#cbd5e1', posX: -250, posY: 100, visible: true, isFront: false },
-                { id: 3, type: 'line', radius: 500, color: '#ffffff', posX: 0, posY: -150, visible: true, isFront: true, angle: 90, thick: 5 }
+                { id: 1, type: 'rect', radius: 400, color: '#ffffff', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#3b82f6', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
             ],
             canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 12, gridDivY: 12
         },
         {
-            name: "Financial Review",
+            name: "Quarterly Review",
             layers: [
-                { id: 1, text: "ANNUAL REPORT", fontFamily: "'Oswald', sans-serif", fontSize: 70, textColor: "#ffffff", isBold: true, isItalic: false, isUnderline: false, posX: -200, posY: -40, visible: true },
-                { id: 2, text: `FY ${new Date().getFullYear()}`, fontFamily: "'Montserrat', sans-serif", fontSize: 35, textColor: "#64748b", isBold: false, isItalic: false, isUnderline: false, posX: -200, posY: 20, visible: true }
+                { id: 1, text: "QUARTERLY REVIEW", fontFamily: "'Montserrat', sans-serif", fontSize: 60, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Montserrat', sans-serif", fontSize: 16, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#1e293b', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'sector', radius: 300, color: '#0ea5e9', posX: 350, posY: 50, visible: true, isFront: false, angle: 135 },
-                { id: 3, type: 'sector', radius: 290, color: '#334155', posX: 360, posY: 60, visible: true, isFront: false, angle: 60 }
+                { id: 1, type: 'rect', radius: 400, color: '#ffffff', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#3b82f6', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#0f172a", gridDivX: 16, gridDivY: 16
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 12, gridDivY: 12
         },
         {
-            name: "Dark Analytics",
+            name: "Strategic Vision",
             layers: [
-                { id: 1, text: "MARKET INSIGHTS", fontFamily: "'Montserrat', sans-serif", fontSize: 60, textColor: "#e2e8f0", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -30, visible: true },
-                { id: 2, text: "Deep Dive Analysis into Q4 Trends", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 24, textColor: "#818cf8", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
+                { id: 1, text: "STRATEGIC VISION", fontFamily: "'Montserrat', sans-serif", fontSize: 60, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Montserrat', sans-serif", fontSize: 16, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#000000', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'circle', radius: 400, color: '#1e1b4b', posX: -300, posY: -200, visible: true, isFront: false },
-                { id: 3, type: 'line', radius: 1000, color: '#4338ca', posX: -500, posY: 100, visible: true, isFront: true, angle: 15, thick: 2 }
+                { id: 1, type: 'rect', radius: 400, color: '#ffffff', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#3b82f6', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#050505", gridDivX: 24, gridDivY: 24
-        },
-        {
-            name: "Brand Identity",
-            layers: [
-                { id: 1, text: "brand.", fontFamily: "'Playfair Display', serif", fontSize: 80, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -50, posY: 0, visible: true },
-                { id: 2, text: `EST. ${new Date().getFullYear()}`, fontFamily: "'Montserrat', sans-serif", fontSize: 18, textColor: "#64748b", isBold: false, isItalic: false, isUnderline: false, posX: 150, posY: 30, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#ffffff', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'rect', radius: 200, color: '#f1f5f9', posX: -150, posY: -50, visible: true, isFront: false }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 6, gridDivY: 6
-        },
-        {
-            name: "Monotone Typography",
-            layers: [
-                { id: 1, text: "AESTHETIC", fontFamily: "'Oswald', sans-serif", fontSize: 120, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -10, visible: true },
-                { id: 2, text: "TYPOGRAPHY", fontFamily: "'Oswald', sans-serif", fontSize: 120, textColor: "#f8fafc", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: 90, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 1200, color: '#e2e8f0', posX: 0, posY: -160, visible: true, isFront: false },
-                { id: 2, type: 'rect', radius: 1200, color: '#475569', posX: 0, posY: 160, visible: true, isFront: false }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 10, gridDivY: 10
-        },
-        {
-            name: "Premium Product",
-            layers: [
-                { id: 1, text: "Premium Collection", fontFamily: "'Shippori Mincho', serif", fontSize: 55, textColor: "#f8fafc", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
-                { id: 2, text: "洗練された大人のためのデザイン", fontFamily: "'Shippori Mincho', serif", fontSize: 20, textColor: "#94a3b8", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#020617', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'ring', radius: 300, color: '#334155', posX: 0, posY: 0, visible: true, isFront: false }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#000000", gridDivX: 12, gridDivY: 12
-        },
-        {
-            name: "Clean Workspace",
-            layers: [
-                { id: 1, text: "WORKSPACE", fontFamily: "'Montserrat', sans-serif", fontSize: 80, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -10, visible: true },
-                { id: 2, text: "Optimize your productivity", fontFamily: "'Montserrat', sans-serif", fontSize: 20, textColor: "#64748b", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 50, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#ffffff', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'circle', radius: 400, color: '#f8fafc', posX: -400, posY: 200, visible: true, isFront: false }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f1f5f9", gridDivX: 12, gridDivY: 12
-        },
-        {
-            name: "Luxury Real Estate",
-            layers: [
-                { id: 1, text: "THE RESIDENCE", fontFamily: "'Playfair Display', serif", fontSize: 70, textColor: "#facc15", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: -30, visible: true },
-                { id: 2, text: "LUXURY APARTMENTS", fontFamily: "'Montserrat', sans-serif", fontSize: 24, textColor: "#fef08a", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 1000, color: '#171717', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'line', radius: 800, color: '#ca8a04', posX: -400, posY: 100, visible: true, isFront: true, angle: 0, thick: 2 }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#0a0a0a", gridDivX: 16, gridDivY: 16
-        },
-        {
-            name: "Data Science",
-            layers: [
-                { id: 1, text: "DATA PIPELINE", fontFamily: "'Oswald', sans-serif", fontSize: 75, textColor: "#38bdf8", isBold: true, isItalic: false, isUnderline: false, posX: -150, posY: -30, visible: true },
-                { id: 2, text: "Machine Learning & AI", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 25, textColor: "#cbd5e1", isBold: false, isItalic: false, isUnderline: false, posX: -150, posY: 30, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#0f172a', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'circle', radius: 3, color: '#38bdf8', posX: 200, posY: -50, visible: true, isFront: true },
-                { id: 3, type: 'circle', radius: 3, color: '#38bdf8', posX: 300, posY: -80, visible: true, isFront: true },
-                { id: 4, type: 'circle', radius: 3, color: '#38bdf8', posX: 400, posY: -30, visible: true, isFront: true },
-                { id: 5, type: 'line', radius: 150, color: '#0284c7', posX: 200, posY: -65, visible: true, isFront: true, angle: -15, thick: 1 },
-                { id: 6, type: 'line', radius: 150, color: '#0284c7', posX: 300, posY: -55, visible: true, isFront: true, angle: 25, thick: 1 }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#020617", gridDivX: 20, gridDivY: 20
-        },
-        {
-            name: "Legal Consulting",
-            layers: [
-                { id: 1, text: "LEGAL ADVISORY", fontFamily: "'Playfair Display', serif", fontSize: 60, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
-                { id: 2, text: "Professional Consulting Services", fontFamily: "'Montserrat', sans-serif", fontSize: 20, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#f8fafc', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'rect', radius: 1000, color: '#f1f5f9', posX: -500, posY: 200, visible: true, isFront: false }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 8, gridDivY: 8
-        },
-        {
-            name: "Creative Agency",
-            layers: [
-                { id: 1, text: "CREATIVE", fontFamily: "'Oswald', sans-serif", fontSize: 100, textColor: "#000000", isBold: true, isItalic: false, isUnderline: false, posX: -150, posY: -30, visible: true },
-                { id: 2, text: "STUDIO", fontFamily: "'Oswald', sans-serif", fontSize: 100, textColor: "#ef4444", isBold: true, isItalic: false, isUnderline: false, posX: 150, posY: 30, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#f8fafc', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'circle', radius: 150, color: '#fee2e2', posX: 200, posY: -100, visible: true, isFront: false }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
-        },
-        {
-            name: "Healthcare Innovation",
-            layers: [
-                { id: 1, text: "HEALTHCARE", fontFamily: "'Montserrat', sans-serif", fontSize: 65, textColor: "#0f766e", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -30, visible: true },
-                { id: 2, text: "Future of Medicine", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 24, textColor: "#14b8a6", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 30, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#f0fdfa', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'rect', radius: 400, color: '#ccfbf1', posX: -300, posY: 200, visible: true, isFront: false }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 10, gridDivY: 10
-        },
-        {
-            name: "Sustainable Energy",
-            layers: [
-                { id: 1, text: "GREEN ENERGY", fontFamily: "'Oswald', sans-serif", fontSize: 75, textColor: "#166534", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
-                { id: 2, text: `Sustainability Report ${new Date().getFullYear()}`, fontFamily: "'Montserrat', sans-serif", fontSize: 22, textColor: "#22c55e", isBold: false, isItalic: false, isUnderline: false, posX: 100, posY: 40, visible: true }
-            ],
-            shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#f0fdf4', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'sector', radius: 250, color: '#dcfce7', posX: -250, posY: 150, visible: true, isFront: false, angle: 90 }
-            ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 14, gridDivY: 14
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 12, gridDivY: 12
         },
         {
             name: "Global Logistics",
             layers: [
-                { id: 1, text: "GLOBAL NETWORK", fontFamily: "'Montserrat', sans-serif", fontSize: 60, textColor: "#1e3a8a", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -20, visible: true },
-                { id: 2, text: "Connecting the world.", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#60a5fa", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
+                { id: 1, text: "GLOBAL LOGISTICS", fontFamily: "'Montserrat', sans-serif", fontSize: 60, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Montserrat', sans-serif", fontSize: 16, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#eff6ff', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'circle', radius: 300, color: '#dbeafe', posX: 400, posY: -100, visible: true, isFront: false }
+                { id: 1, type: 'rect', radius: 400, color: '#ffffff', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#3b82f6', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 12, gridDivY: 12
         },
         {
-            name: "Wealth Management",
+            name: "B2B Networking",
             layers: [
-                { id: 1, text: "WEALTH", fontFamily: "'Playfair Display', serif", fontSize: 85, textColor: "#0f172a", isBold: false, isItalic: false, isUnderline: false, posX: -150, posY: -20, visible: true },
-                { id: 2, text: "MANAGEMENT", fontFamily: "'Playfair Display', serif", fontSize: 85, textColor: "#cbd5e1", isBold: false, isItalic: false, isUnderline: false, posX: 150, posY: 50, visible: true }
+                { id: 1, text: "B2B NETWORKING", fontFamily: "'Montserrat', sans-serif", fontSize: 60, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Montserrat', sans-serif", fontSize: 16, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#f8fafc', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'line', radius: 500, color: '#94a3b8', posX: -250, posY: 15, visible: true, isFront: true, angle: 0, thick: 2 }
+                { id: 1, type: 'rect', radius: 400, color: '#ffffff', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#3b82f6', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 8, gridDivY: 8
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Board Meeting",
+            layers: [
+                { id: 1, text: "BOARD MEETING", fontFamily: "'Montserrat', sans-serif", fontSize: 60, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Montserrat', sans-serif", fontSize: 16, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 400, color: '#ffffff', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#3b82f6', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Agile Development",
+            layers: [
+                { id: 1, text: "AGILE DEVELOPMENT", fontFamily: "'Montserrat', sans-serif", fontSize: 60, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Montserrat', sans-serif", fontSize: 16, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 400, color: '#ffffff', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#3b82f6', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Financial Report",
+            layers: [
+                { id: 1, text: "FINANCIAL REPORT", fontFamily: "'Montserrat', sans-serif", fontSize: 60, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Montserrat', sans-serif", fontSize: 16, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 400, color: '#ffffff', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#3b82f6', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Compliance Advisory",
+            layers: [
+                { id: 1, text: "COMPLIANCE ADVISORY", fontFamily: "'Montserrat', sans-serif", fontSize: 60, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Montserrat', sans-serif", fontSize: 16, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 400, color: '#ffffff', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#3b82f6', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Market Analysis",
+            layers: [
+                { id: 1, text: "MARKET ANALYSIS", fontFamily: "'Montserrat', sans-serif", fontSize: 60, textColor: "#0f172a", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Montserrat', sans-serif", fontSize: 16, textColor: "#3b82f6", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'rect', radius: 400, color: '#ffffff', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#3b82f6', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f8fafc", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "AI Integration",
+            layers: [
+                { id: 1, text: "AI INTEGRATION", fontFamily: "'Oswald', sans-serif", fontSize: 60, textColor: "#f8fafc", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Oswald', sans-serif", fontSize: 16, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'line', radius: 400, color: '#38bdf8', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#0ea5e9', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#020617", gridDivX: 12, gridDivY: 12
         },
         {
             name: "Cyber Security",
             layers: [
-                { id: 1, text: "SECURE PROTOCOL", fontFamily: "'Oswald', sans-serif", fontSize: 70, textColor: "#3b82f6", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -30, visible: true },
-                { id: 2, text: "Zero Trust Architecture", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 24, textColor: "#60a5fa", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 30, visible: true }
+                { id: 1, text: "CYBER SECURITY", fontFamily: "'Oswald', sans-serif", fontSize: 60, textColor: "#f8fafc", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Oswald', sans-serif", fontSize: 16, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#020617', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'line', radius: 1000, color: '#1e3a8a', posX: -500, posY: 0, visible: true, isFront: false, angle: 0, thick: 1 },
-                { id: 3, type: 'line', radius: 1000, color: '#1e3a8a', posX: -500, posY: 20, visible: true, isFront: false, angle: 0, thick: 1 },
-                { id: 4, type: 'line', radius: 1000, color: '#1e3a8a', posX: -500, posY: -20, visible: true, isFront: false, angle: 0, thick: 1 }
+                { id: 1, type: 'line', radius: 400, color: '#38bdf8', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#0ea5e9', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#000000", gridDivX: 16, gridDivY: 16
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#020617", gridDivX: 12, gridDivY: 12
         },
         {
-            name: "E-commerce Strategy",
+            name: "Data Science",
             layers: [
-                { id: 1, text: "E-COMMERCE", fontFamily: "'Montserrat', sans-serif", fontSize: 75, textColor: "#111827", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -30, visible: true },
-                { id: 2, text: `Retail Trends ${new Date().getFullYear()}`, fontFamily: "'Noto Sans JP', sans-serif", fontSize: 24, textColor: "#f59e0b", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
+                { id: 1, text: "DATA SCIENCE", fontFamily: "'Oswald', sans-serif", fontSize: 60, textColor: "#f8fafc", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Oswald', sans-serif", fontSize: 16, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#f3f4f6', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'circle', radius: 200, color: '#fde68a', posX: -350, posY: -150, visible: true, isFront: false }
+                { id: 1, type: 'line', radius: 400, color: '#38bdf8', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#0ea5e9', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#020617", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Tech Startup",
+            layers: [
+                { id: 1, text: "TECH STARTUP", fontFamily: "'Oswald', sans-serif", fontSize: 60, textColor: "#f8fafc", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Oswald', sans-serif", fontSize: 16, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'line', radius: 400, color: '#38bdf8', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#0ea5e9', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#020617", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Cloud Architecture",
+            layers: [
+                { id: 1, text: "CLOUD ARCHITECTURE", fontFamily: "'Oswald', sans-serif", fontSize: 60, textColor: "#f8fafc", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Oswald', sans-serif", fontSize: 16, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'line', radius: 400, color: '#38bdf8', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#0ea5e9', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#020617", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Web3 Concepts",
+            layers: [
+                { id: 1, text: "WEB3 CONCEPTS", fontFamily: "'Oswald', sans-serif", fontSize: 60, textColor: "#f8fafc", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Oswald', sans-serif", fontSize: 16, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'line', radius: 400, color: '#38bdf8', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#0ea5e9', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#020617", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Quantum Computing",
+            layers: [
+                { id: 1, text: "QUANTUM COMPUTING", fontFamily: "'Oswald', sans-serif", fontSize: 60, textColor: "#f8fafc", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Oswald', sans-serif", fontSize: 16, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'line', radius: 400, color: '#38bdf8', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#0ea5e9', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#020617", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Deep Learning",
+            layers: [
+                { id: 1, text: "DEEP LEARNING", fontFamily: "'Oswald', sans-serif", fontSize: 60, textColor: "#f8fafc", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Oswald', sans-serif", fontSize: 16, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'line', radius: 400, color: '#38bdf8', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#0ea5e9', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#020617", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "IoT Solutions",
+            layers: [
+                { id: 1, text: "IOT SOLUTIONS", fontFamily: "'Oswald', sans-serif", fontSize: 60, textColor: "#f8fafc", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Oswald', sans-serif", fontSize: 16, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'line', radius: 400, color: '#38bdf8', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#0ea5e9', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#020617", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Robotic Automation",
+            layers: [
+                { id: 1, text: "ROBOTIC AUTOMATION", fontFamily: "'Oswald', sans-serif", fontSize: 60, textColor: "#f8fafc", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Oswald', sans-serif", fontSize: 16, textColor: "#0ea5e9", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'line', radius: 400, color: '#38bdf8', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#0ea5e9', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#020617", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Monochrome Aesthetic",
+            layers: [
+                { id: 1, text: "MONOCHROME AESTHETIC", fontFamily: "'Playfair Display', serif", fontSize: 60, textColor: "#171717", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Playfair Display', serif", fontSize: 16, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'circle', radius: 400, color: '#f5f5f5', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#737373', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
             ],
             canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
         },
         {
-            name: "HR Leadership",
+            name: "Clean Workspace",
             layers: [
-                { id: 1, text: "HUMAN", fontFamily: "'Oswald', sans-serif", fontSize: 80, textColor: "#4f46e5", isBold: true, isItalic: false, isUnderline: false, posX: -150, posY: -20, visible: true },
-                { id: 2, text: "RESOURCES", fontFamily: "'Oswald', sans-serif", fontSize: 80, textColor: "#1e1b4b", isBold: true, isItalic: false, isUnderline: false, posX: 150, posY: -20, visible: true },
-                { id: 3, text: "Talent Management", fontFamily: "'Montserrat', sans-serif", fontSize: 20, textColor: "#6b7280", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 50, visible: true }
+                { id: 1, text: "CLEAN WORKSPACE", fontFamily: "'Playfair Display', serif", fontSize: 60, textColor: "#171717", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Playfair Display', serif", fontSize: 16, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#f9fafb', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'line', radius: 400, color: '#c7d2fe', posX: -200, posY: 80, visible: true, isFront: true, angle: 0, thick: 4 }
+                { id: 1, type: 'circle', radius: 400, color: '#f5f5f5', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#737373', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 10, gridDivY: 10
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "White Space",
+            layers: [
+                { id: 1, text: "WHITE SPACE", fontFamily: "'Playfair Display', serif", fontSize: 60, textColor: "#171717", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Playfair Display', serif", fontSize: 16, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'circle', radius: 400, color: '#f5f5f5', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#737373', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Typography Focus",
+            layers: [
+                { id: 1, text: "TYPOGRAPHY FOCUS", fontFamily: "'Playfair Display', serif", fontSize: 60, textColor: "#171717", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Playfair Display', serif", fontSize: 16, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'circle', radius: 400, color: '#f5f5f5', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#737373', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Scandinavian Design",
+            layers: [
+                { id: 1, text: "SCANDINAVIAN DESIGN", fontFamily: "'Playfair Display', serif", fontSize: 60, textColor: "#171717", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Playfair Display', serif", fontSize: 16, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'circle', radius: 400, color: '#f5f5f5', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#737373', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Less is More",
+            layers: [
+                { id: 1, text: "LESS IS MORE", fontFamily: "'Playfair Display', serif", fontSize: 60, textColor: "#171717", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Playfair Display', serif", fontSize: 16, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'circle', radius: 400, color: '#f5f5f5', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#737373', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Serene Calm",
+            layers: [
+                { id: 1, text: "SERENE CALM", fontFamily: "'Playfair Display', serif", fontSize: 60, textColor: "#171717", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Playfair Display', serif", fontSize: 16, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'circle', radius: 400, color: '#f5f5f5', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#737373', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Essential Elements",
+            layers: [
+                { id: 1, text: "ESSENTIAL ELEMENTS", fontFamily: "'Playfair Display', serif", fontSize: 60, textColor: "#171717", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Playfair Display', serif", fontSize: 16, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'circle', radius: 400, color: '#f5f5f5', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#737373', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Elegant Void",
+            layers: [
+                { id: 1, text: "ELEGANT VOID", fontFamily: "'Playfair Display', serif", fontSize: 60, textColor: "#171717", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Playfair Display', serif", fontSize: 16, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'circle', radius: 400, color: '#f5f5f5', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#737373', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Silent Luxury",
+            layers: [
+                { id: 1, text: "SILENT LUXURY", fontFamily: "'Playfair Display', serif", fontSize: 60, textColor: "#171717", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Playfair Display', serif", fontSize: 16, textColor: "#737373", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'circle', radius: 400, color: '#f5f5f5', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#737373', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 12, gridDivY: 12
         },
         {
             name: "Fine Dining",
             layers: [
-                { id: 1, text: "GASTRONOMY", fontFamily: "'Playfair Display', serif", fontSize: 70, textColor: "#000000", isBold: false, isItalic: true, isUnderline: false, posX: 0, posY: -20, visible: true },
-                { id: 2, text: "A Culinary Experience", fontFamily: "'Shippori Mincho', serif", fontSize: 20, textColor: "#525252", isBold: false, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
+                { id: 1, text: "FINE DINING", fontFamily: "'Shippori Mincho', serif", fontSize: 60, textColor: "#fafaf9", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Shippori Mincho', serif", fontSize: 16, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#fafaf9', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'circle', radius: 250, color: '#f5f5f4', posX: 0, posY: 0, visible: true, isFront: false }
+                { id: 1, type: 'ring', radius: 400, color: '#44403c', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#d6d3d1', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 8, gridDivY: 8
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#1c1917", gridDivX: 12, gridDivY: 12
         },
         {
-            name: "Art Exhibition",
+            name: "Luxury Real Estate",
             layers: [
-                { id: 1, text: "MODERN ART", fontFamily: "'Oswald', sans-serif", fontSize: 90, textColor: "#171717", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: -30, visible: true },
-                { id: 2, text: "GALLERY", fontFamily: "'Montserrat', sans-serif", fontSize: 30, textColor: "#a3a3a3", isBold: true, isItalic: false, isUnderline: false, posX: 0, posY: 40, visible: true }
+                { id: 1, text: "LUXURY REAL ESTATE", fontFamily: "'Shippori Mincho', serif", fontSize: 60, textColor: "#fafaf9", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Shippori Mincho', serif", fontSize: 16, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
             ],
             shapes: [
-                { id: 1, type: 'rect', radius: 800, color: '#fafafa', posX: 0, posY: 0, visible: true, isFront: false },
-                { id: 2, type: 'rect', radius: 150, color: '#000000', posX: -200, posY: -50, visible: true, isFront: false },
-                { id: 3, type: 'circle', radius: 150, color: '#e5e5e5', posX: 200, posY: 50, visible: true, isFront: false }
+                { id: 1, type: 'ring', radius: 400, color: '#44403c', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#d6d3d1', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
             ],
-            canvasWidth: 1200, canvasHeight: 630, bgColor: "#ffffff", gridDivX: 14, gridDivY: 14
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#1c1917", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "High-End Fashion",
+            layers: [
+                { id: 1, text: "HIGH-END FASHION", fontFamily: "'Shippori Mincho', serif", fontSize: 60, textColor: "#fafaf9", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Shippori Mincho', serif", fontSize: 16, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'ring', radius: 400, color: '#44403c', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#d6d3d1', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#1c1917", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Exclusive Spa",
+            layers: [
+                { id: 1, text: "EXCLUSIVE SPA", fontFamily: "'Shippori Mincho', serif", fontSize: 60, textColor: "#fafaf9", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Shippori Mincho', serif", fontSize: 16, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'ring', radius: 400, color: '#44403c', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#d6d3d1', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#1c1917", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Boutique Hotel",
+            layers: [
+                { id: 1, text: "BOUTIQUE HOTEL", fontFamily: "'Shippori Mincho', serif", fontSize: 60, textColor: "#fafaf9", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Shippori Mincho', serif", fontSize: 16, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'ring', radius: 400, color: '#44403c', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#d6d3d1', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#1c1917", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Private Collection",
+            layers: [
+                { id: 1, text: "PRIVATE COLLECTION", fontFamily: "'Shippori Mincho', serif", fontSize: 60, textColor: "#fafaf9", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Shippori Mincho', serif", fontSize: 16, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'ring', radius: 400, color: '#44403c', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#d6d3d1', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#1c1917", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Artisan Craft",
+            layers: [
+                { id: 1, text: "ARTISAN CRAFT", fontFamily: "'Shippori Mincho', serif", fontSize: 60, textColor: "#fafaf9", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Shippori Mincho', serif", fontSize: 16, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'ring', radius: 400, color: '#44403c', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#d6d3d1', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#1c1917", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Organic Beauty",
+            layers: [
+                { id: 1, text: "ORGANIC BEAUTY", fontFamily: "'Shippori Mincho', serif", fontSize: 60, textColor: "#fafaf9", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Shippori Mincho', serif", fontSize: 16, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'ring', radius: 400, color: '#44403c', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#d6d3d1', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#1c1917", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Modern Architecture",
+            layers: [
+                { id: 1, text: "MODERN ARCHITECTURE", fontFamily: "'Shippori Mincho', serif", fontSize: 60, textColor: "#fafaf9", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Shippori Mincho', serif", fontSize: 16, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'ring', radius: 400, color: '#44403c', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#d6d3d1', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#1c1917", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Vintage Heritage",
+            layers: [
+                { id: 1, text: "VINTAGE HERITAGE", fontFamily: "'Shippori Mincho', serif", fontSize: 60, textColor: "#fafaf9", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Shippori Mincho', serif", fontSize: 16, textColor: "#d6d3d1", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'ring', radius: 400, color: '#44403c', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#d6d3d1', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#1c1917", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Research Paper",
+            layers: [
+                { id: 1, text: "RESEARCH PAPER", fontFamily: "'Noto Serif JP', serif", fontSize: 60, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Noto Serif JP', serif", fontSize: 16, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'sector', radius: 400, color: '#cbd5e1', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#475569', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f1f5f9", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Intellectual Debate",
+            layers: [
+                { id: 1, text: "INTELLECTUAL DEBATE", fontFamily: "'Noto Serif JP', serif", fontSize: 60, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Noto Serif JP', serif", fontSize: 16, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'sector', radius: 400, color: '#cbd5e1', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#475569', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f1f5f9", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Philosophy Lecture",
+            layers: [
+                { id: 1, text: "PHILOSOPHY LECTURE", fontFamily: "'Noto Serif JP', serif", fontSize: 60, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Noto Serif JP', serif", fontSize: 16, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'sector', radius: 400, color: '#cbd5e1', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#475569', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f1f5f9", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Economics Seminar",
+            layers: [
+                { id: 1, text: "ECONOMICS SEMINAR", fontFamily: "'Noto Serif JP', serif", fontSize: 60, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Noto Serif JP', serif", fontSize: 16, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'sector', radius: 400, color: '#cbd5e1', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#475569', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f1f5f9", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Sociology Forum",
+            layers: [
+                { id: 1, text: "SOCIOLOGY FORUM", fontFamily: "'Noto Serif JP', serif", fontSize: 60, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Noto Serif JP', serif", fontSize: 16, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'sector', radius: 400, color: '#cbd5e1', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#475569', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f1f5f9", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Historical Review",
+            layers: [
+                { id: 1, text: "HISTORICAL REVIEW", fontFamily: "'Noto Serif JP', serif", fontSize: 60, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Noto Serif JP', serif", fontSize: 16, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'sector', radius: 400, color: '#cbd5e1', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#475569', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f1f5f9", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Logic & Reason",
+            layers: [
+                { id: 1, text: "LOGIC & REASON", fontFamily: "'Noto Serif JP', serif", fontSize: 60, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Noto Serif JP', serif", fontSize: 16, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'sector', radius: 400, color: '#cbd5e1', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#475569', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f1f5f9", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Law Perspective",
+            layers: [
+                { id: 1, text: "LAW PERSPECTIVE", fontFamily: "'Noto Serif JP', serif", fontSize: 60, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Noto Serif JP', serif", fontSize: 16, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'sector', radius: 400, color: '#cbd5e1', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#475569', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f1f5f9", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Medical Symposium",
+            layers: [
+                { id: 1, text: "MEDICAL SYMPOSIUM", fontFamily: "'Noto Serif JP', serif", fontSize: 60, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Noto Serif JP', serif", fontSize: 16, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'sector', radius: 400, color: '#cbd5e1', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#475569', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f1f5f9", gridDivX: 12, gridDivY: 12
+        },
+        {
+            name: "Scientific Discovery",
+            layers: [
+                { id: 1, text: "SCIENTIFIC DISCOVERY", fontFamily: "'Noto Serif JP', serif", fontSize: 60, textColor: "#1e293b", isBold: true, isItalic: false, isUnderline: false, posX: -100, posY: -20, visible: true },
+                { id: 2, text: "Strategy & Intelligence", fontFamily: "'Noto Sans JP', sans-serif", fontSize: 20, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: -100, posY: 40, visible: true },
+                { id: 3, text: `${new Date().getFullYear()}`, fontFamily: "'Noto Serif JP', serif", fontSize: 16, textColor: "#475569", isBold: false, isItalic: false, isUnderline: false, posX: 350, posY: 200, visible: true }
+            ],
+            shapes: [
+                { id: 1, type: 'sector', radius: 400, color: '#cbd5e1', posX: -300, posY: 0, visible: true, isFront: false, angle: 45, thick: 2 },
+                { id: 2, type: 'line', radius: 800, color: '#475569', posX: 0, posY: 100, visible: true, isFront: true, angle: 0, thick: 1 }
+            ],
+            canvasWidth: 1200, canvasHeight: 630, bgColor: "#f1f5f9", gridDivX: 12, gridDivY: 12
         }
     ];
 
