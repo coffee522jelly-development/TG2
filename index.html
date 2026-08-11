@@ -1328,14 +1328,6 @@
         ctx.fillStyle = bgColorInput.value;
         ctx.fillRect(0, 0, width, height);
 
-        if (isDragging) {
-            ctx.save();
-            ctx.strokeStyle = "rgba(148, 163, 184, 0.25)"; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
-            for (let i = 1; i < divX; i++) { ctx.beginPath(); ctx.moveTo(i * stepX, 0); ctx.lineTo(i * stepX, height); ctx.stroke(); }
-            for (let j = 1; j < divY; j++) { ctx.beginPath(); ctx.moveTo(0, j * stepY); ctx.lineTo(width, j * stepY); ctx.stroke(); }
-            ctx.restore();
-        }
-
         buildThreeScene();
         tCamera.left = -width / 2; tCamera.right = width / 2; tCamera.top = height / 2; tCamera.bottom = -height / 2;
         tCamera.updateProjectionMatrix();
@@ -1396,6 +1388,14 @@
         tRenderer.clear();
         tRenderer.render(tScene, tCamera);
         ctx.drawImage(threeCanvas, 0, 0);
+
+        if (isDragging) {
+            ctx.save();
+            ctx.strokeStyle = "rgba(148, 163, 184, 0.25)"; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+            for (let i = 1; i < divX; i++) { ctx.beginPath(); ctx.moveTo(i * stepX, 0); ctx.lineTo(i * stepX, height); ctx.stroke(); }
+            for (let j = 1; j < divY; j++) { ctx.beginPath(); ctx.moveTo(0, j * stepY); ctx.lineTo(width, j * stepY); ctx.stroke(); }
+            ctx.restore();
+        }
 
         if (isDragging && activeLayerType === 'shape' && dragTargetLayer) {
             const cx = (width / 2) + dragTargetLayer.posX;
